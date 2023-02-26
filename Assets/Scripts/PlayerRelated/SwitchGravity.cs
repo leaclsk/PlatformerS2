@@ -29,7 +29,7 @@ public class SwitchGravity : MonoBehaviour
     }
 
 
-     // mettre le player à l'endroit : càd pas la tête collée au plafond mais à l'envers lorsque la 
+    // mettre le player à l'endroit : càd pas la tête collée au plafond mais à l'envers lorsque la 
     //gravité est inversée.
     void Rotation()
     {
@@ -42,7 +42,7 @@ public class SwitchGravity : MonoBehaviour
         top = !top;
 
     }
-    //mettre le player à l'endroit (qu'il regarde vers la droite lorsqu'il va à droite)
+    //mettre le player à l'endroit, dans le sens de la marche
     void Flip()
     {
         facingRight = !facingRight;
