@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Sprikes
+  - Star
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -17,12 +19,11 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed_horizontal = 400.0f;
     [SerializeField] bool is_jumping = false;
     [SerializeField] bool can_jump = false;
-    [Range(0, 1)][SerializeField] float smooth_time = 0.5f;
-    
+    //[Range(0, 1)][SerializeField] float smooth_time = 0.5f;
 
     
-
     
+
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +54,8 @@ public class Player : MonoBehaviour
             animController.SetBool("Jumping", true);
         }
 
+       
+
     }
     void FixedUpdate()
     {
@@ -81,10 +84,18 @@ public class Player : MonoBehaviour
     {
         can_jump = true;
         animController.SetBool("Jumping", false);
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {   
         animController.SetBool("Jumping", false);        
+    }
+
+    
+    public void StarCollected()
+    {
+       
+
     }
 
     
