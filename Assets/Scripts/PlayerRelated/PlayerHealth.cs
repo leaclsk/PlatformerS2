@@ -13,6 +13,7 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth = 0;
     Vector2 ref_velocity = Vector2.zero;
     public Vector3 PosRespawn = Vector3.zero;
+    public bool Respawn = false;
 
     
     public Health healthBar;
@@ -47,11 +48,27 @@ public class PlayerHealth : MonoBehaviour
            
             TakeDamage(100);
         }
-
         
     }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("DamageZone"))
+        {
+           
+                    StartCoroutine(Damage());
+               
+        }         
 
-    private void TakeDamage(int damage)
+    }
+
+IEnumerator Damage()
+{
+        TakeDamage(2);
+        yield return new WaitForSeconds(20f);
+    
+}
+
+private void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
@@ -59,16 +76,17 @@ public class PlayerHealth : MonoBehaviour
 
     public void Death()
     {
+        
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         animController.SetBool("isDead", true);
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            
+            Respawn = true;
             gameObject.transform.position = PosRespawn;
             currentHealth = 100;
             animController.SetBool("isDead", false);
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-            
+            Respawn = false;
 
         }
     }

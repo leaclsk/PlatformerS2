@@ -11,6 +11,8 @@ public class Health : MonoBehaviour
     [SerializeField] Gradient gradient;
     [SerializeField] Image fill;
 
+    [SerializeField] PlayerHealth playerHealth;
+
     #region Health
     public void SetMaxHealth(int health)
     {
@@ -18,6 +20,8 @@ public class Health : MonoBehaviour
         slider.value = health;
 
         fill.color = gradient.Evaluate(1f);
+
+        
     }
 
     public void SetHealth (int health)
@@ -26,14 +30,7 @@ public class Health : MonoBehaviour
 
         fill.color = gradient.Evaluate(slider.normalizedValue);
     }
+
+ 
     #endregion
 }
-
-/*  
-    Créer Canvas, ajouter image de fond (Bar), ajouter empty de ref (HealthBar), ajouter image de fill (Health).
-    Les sets aux mêmes dimensions (Parentage puis Anchor Presets (Stretch/Stretch) sur Bar + Health).
-    Ajouter Slider (None; None), Set les valeurs, et référencer l'image Health au Slider.
-    Créer script Health (voir ci-dessus) dans HealthBar.
-    Ajouter méthode TakeDamage au script du Player (voir script PlayerHealth).
-    Set les Anchor Preset de HealthBar là où elle doit se trouver sur l'écran.
- */ 

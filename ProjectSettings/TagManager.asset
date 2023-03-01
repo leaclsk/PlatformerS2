@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Sprikes
   - Star
+  - GravityUp
+  - GravityDown
+  - DamageZone
   layers:
   - Default
   - TransparentFX

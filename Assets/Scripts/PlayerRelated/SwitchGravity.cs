@@ -15,33 +15,43 @@ public class SwitchGravity : MonoBehaviour
         player = GetComponent<Player>();
         rb = GetComponent<Rigidbody2D>();
     }
-
+    
     // Update is called once per frame
     void Update()
     {
         // inverser la gravité.
         if(Input.GetKeyDown(KeyCode.E))
-        { 
-            rb.gravityScale *= -1;
-            Rotation();
-            Flip();
+        {
+            StartCoroutine(Switch());
         }
 
        
     }
+    IEnumerator Switch()
+    {
+        rb.gravityScale *= -1;
+        Rotation();
+        Flip();
+        yield return new WaitForSeconds(1000f);
+
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     { 
         if (other.CompareTag("GravityUp"))
         {
-           rb.gravityScale = -1;
-            Rotation();
-            Flip();
+           rb.gravityScale = -3;
+            transform.eulerAngles = new Vector3(0, 0, 180f);
+            Vector3 inverse = transform.localScale;
+
         }
         if (other.CompareTag("GravityDown"))
         {
-            rb.gravityScale = 1;
-            Rotation();
-            Flip();
+            rb.gravityScale = 3;
+            transform.eulerAngles = Vector3.zero;
+            Vector3 inverse = transform.localScale;
+            inverse.x *= -1;
+
         }
     }
 
