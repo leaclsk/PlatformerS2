@@ -26,6 +26,23 @@ public class SwitchGravity : MonoBehaviour
             Rotation();
             Flip();
         }
+
+       
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    { 
+        if (other.CompareTag("GravityUp"))
+        {
+           rb.gravityScale = -1;
+            Rotation();
+            Flip();
+        }
+        if (other.CompareTag("GravityDown"))
+        {
+            rb.gravityScale = 1;
+            Rotation();
+            Flip();
+        }
     }
 
 

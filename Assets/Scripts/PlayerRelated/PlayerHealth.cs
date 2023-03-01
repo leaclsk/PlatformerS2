@@ -14,7 +14,8 @@ public class PlayerHealth : MonoBehaviour
     Vector2 ref_velocity = Vector2.zero;
     public Vector3 PosRespawn = Vector3.zero;
 
-    public SwitchGravity switchGravity;
+    
+    public Health healthBar;
 
 
     // Start is called before the first frame update
@@ -23,16 +24,23 @@ public class PlayerHealth : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animController= GetComponent<Animator>();
         currentHealth = maxHealth;
-        //healthBarRef.SetMaxHealth(maxHealth);
+        healthBar.SetMaxHealth(maxHealth);
         SetPosRespawn(PosRespawn);
     }
 
     private void Update()
     {
-       
-    }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            TakeDamage(20);
 
-    private void OnTriggerStay2D(Collider2D other)
+        }
+        if (currentHealth <= 0)
+        {
+            Death();
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Sprikes"))
         {
@@ -40,16 +48,13 @@ public class PlayerHealth : MonoBehaviour
             TakeDamage(100);
         }
 
-        if (currentHealth <= 0)
-        {
-            Death();
-        }
+        
     }
 
     private void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        //healthBarRef.SetHealth(currentHealth);
+        healthBar.SetHealth(currentHealth);
     }
 
     public void Death()
@@ -71,4 +76,5 @@ public class PlayerHealth : MonoBehaviour
     {
         gameObject.transform.position = PosRespawn;
     }
+
 }

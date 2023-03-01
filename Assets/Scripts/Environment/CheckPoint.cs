@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
-    [SerializeField]private PlayerHealth heal;
+    [SerializeField]public PlayerHealth heal;
 
 
     private void OnTriggerEnter2D(Collider2D collision)
