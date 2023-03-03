@@ -40,7 +40,7 @@ public class SwitchGravity : MonoBehaviour
     { 
         if (other.CompareTag("GravityUp"))
         {
-           rb.gravityScale = -3;
+            rb.gravityScale = -3;
             transform.eulerAngles = new Vector3(0, 0, 180f);
             Vector3 inverse = transform.localScale;
 

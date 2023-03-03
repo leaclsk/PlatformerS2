@@ -14,7 +14,8 @@ public class ItemCollector : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Stars++;
-            starsText.text = "Stars" + Stars;
+            starsText.text =  Stars + "";
+            
         }
     }
 }
