@@ -17,6 +17,8 @@ public class PlayerHealth : MonoBehaviour
 
     
     public Health healthBar;
+    public Player player;
+    public SwitchGravity switchGravity;
 
 
     // Start is called before the first frame update
@@ -86,6 +88,13 @@ private void TakeDamage(int damage)
             currentHealth = 100;
             animController.SetBool("isDead", false);
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            /**if (player.rb.gravityScale < 0)
+            {
+                player.rb.gravityScale = 3;
+                switchGravity.Flip();
+                switchGravity.Rotation();
+
+            }**/
             Respawn = false;
 
         }

@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour
 {
 
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     SpriteRenderer sr;
     Animator animController;
     float horizontal_value;

@@ -58,7 +58,7 @@ public class SwitchGravity : MonoBehaviour
 
     // mettre le player à l'endroit : càd pas la tête collée au plafond mais à l'envers lorsque la 
     //gravité est inversée.
-    void Rotation()
+    public void Rotation()
     {
         if(top == false){
             transform.eulerAngles = new Vector3(0, 0, 180f);
@@ -70,7 +70,7 @@ public class SwitchGravity : MonoBehaviour
 
     }
     //mettre le player à l'endroit, dans le sens de la marche
-    void Flip()
+    public void Flip()
     {
         facingRight = !facingRight;
         Vector3 inverse = transform.localScale;
