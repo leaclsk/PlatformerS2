@@ -16,9 +16,8 @@ public class PlayerHealth : MonoBehaviour
     public bool Respawn = false;
 
     
-    public Health healthBar;
-    public Player player;
-    public SwitchGravity switchGravity;
+    [SerializeField] Health healthBar;
+    
 
 
     // Start is called before the first frame update
@@ -85,16 +84,15 @@ private void TakeDamage(int damage)
         {
             Respawn = true;
             gameObject.transform.position = PosRespawn;
+            healthBar.SetMaxHealth(maxHealth);
+            rb.gravityScale = 3;
+            transform.eulerAngles = Vector3.zero;
+            Vector3 inverse = transform.localScale;
+            inverse.x = 1;
+            transform.localScale = inverse;
             currentHealth = 100;
             animController.SetBool("isDead", false);
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-            /**if (player.rb.gravityScale < 0)
-            {
-                player.rb.gravityScale = 3;
-                switchGravity.Flip();
-                switchGravity.Rotation();
-
-            }**/
             Respawn = false;
 
         }

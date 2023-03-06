@@ -6,13 +6,13 @@ public class SwitchGravity : MonoBehaviour
 {
     Rigidbody2D rb;
     bool top;
-    Player player;
     bool facingRight;
+    [SerializeField] bool gravitySwitch = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GetComponent<Player>();
+        gravitySwitch = true;
         rb = GetComponent<Rigidbody2D>();
     }
     
@@ -20,40 +20,43 @@ public class SwitchGravity : MonoBehaviour
     void Update()
     {
         // inverser la gravité.
-        if(Input.GetKeyDown(KeyCode.E))
+        if(gravitySwitch)
         {
-            StartCoroutine(Switch());
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                rb.gravityScale *= -1;
+                Rotation();
+                Flip();
+            }
+            
         }
 
        
     }
-    IEnumerator Switch()
-    {
-        rb.gravityScale *= -1;
-        Rotation();
-        Flip();
-        yield return new WaitForSeconds(1000f);
 
-    }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D collision)
     { 
-        if (other.CompareTag("GravityUp"))
+        if (collision.CompareTag("GravityUp"))
         {
+            gravitySwitch = false;
             rb.gravityScale = -3;
-            transform.eulerAngles = new Vector3(0, 0, 180f);
-            Vector3 inverse = transform.localScale;
+            Flip();
+            Rotation();
 
         }
-        if (other.CompareTag("GravityDown"))
+        if (collision.CompareTag("GravityDown"))
         {
+            gravitySwitch = false;
             rb.gravityScale = 3;
-            transform.eulerAngles = Vector3.zero;
-            Vector3 inverse = transform.localScale;
-            inverse.x *= -1;
+            Flip();
+            Rotation();
 
         }
+        else { gravitySwitch = true; }
+        
     }
+   
 
 
     // mettre le player à l'endroit : càd pas la tête collée au plafond mais à l'envers lorsque la 
