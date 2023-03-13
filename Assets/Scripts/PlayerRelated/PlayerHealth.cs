@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public SwitchGravity switchG;
+    
     //[SerializeField] Health healthBarRef;
     Rigidbody2D rb;
     Animator animController;
@@ -82,14 +84,21 @@ private void TakeDamage(int damage)
         animController.SetBool("isDead", true);
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            
             Respawn = true;
             gameObject.transform.position = PosRespawn;
             healthBar.SetMaxHealth(maxHealth);
-            rb.gravityScale = 3;
-            transform.eulerAngles = Vector3.zero;
-            Vector3 inverse = transform.localScale;
-            inverse.x = 1;
-            transform.localScale = inverse;
+            
+           
+            
+            if(switchG.SensGravity < 0)
+            {
+                rb.gravityScale = 3;
+                switchG.Rotation();
+                switchG.Flip();
+            }
+
+            
             currentHealth = 100;
             animController.SetBool("isDead", false);
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;

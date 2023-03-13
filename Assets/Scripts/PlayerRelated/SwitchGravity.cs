@@ -7,9 +7,11 @@ public class SwitchGravity : MonoBehaviour
     Rigidbody2D rb;
     bool top;
     bool facingRight;
-    [SerializeField] bool gravitySwitch = true;
+    public bool inTheZone = false;
+    [SerializeField] public bool gravitySwitch = true;
+    [SerializeField] public float SensGravity;
 
-    // Start is called before the first frame update
+  
     void Start()
     {
         gravitySwitch = true;
@@ -25,38 +27,57 @@ public class SwitchGravity : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 rb.gravityScale *= -1;
+                
                 Rotation();
                 Flip();
             }
             
         }
-
+        
+        SensGravity = rb.gravityScale;
+        if(!inTheZone) gravitySwitch = true;
+        else if(inTheZone) gravitySwitch = false;
        
     }
-
-
-    void OnTriggerStay2D(Collider2D collision)
-    { 
-        if (collision.CompareTag("GravityUp"))
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.CompareTag("GravityUp") || collision.CompareTag("GravityDown"))
         {
-            gravitySwitch = false;
-            rb.gravityScale = -3;
-            Flip();
-            Rotation();
-
+            inTheZone = true;
         }
-        if (collision.CompareTag("GravityDown"))
-        {
-            gravitySwitch = false;
-            rb.gravityScale = 3;
-            Flip();
-            Rotation();
-
-        }
-        else { gravitySwitch = true; }
+        
         
     }
-   
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("GravityUp") || collision.CompareTag("GravityDown"))
+        {
+            inTheZone = false;
+        }
+    }
+
+    /* void OnTriggerStay2D(Collider2D collision)
+     { 
+         if (collision.CompareTag("GravityUp"))
+         {
+             gravitySwitch = false;
+             rb.gravityScale = -3;
+             Flip();
+             Rotation();
+
+         }
+         if (collision.CompareTag("GravityDown"))
+         {
+             gravitySwitch = false;
+             rb.gravityScale = 3;
+             Flip();
+             Rotation();
+
+         }
+         else { gravitySwitch = true; }
+
+     }*/
+
 
 
     // mettre le player à l'endroit : càd pas la tête collée au plafond mais à l'envers lorsque la 
@@ -79,5 +100,6 @@ public class SwitchGravity : MonoBehaviour
         Vector3 inverse = transform.localScale;
         inverse.x *= -1;
         transform.localScale = inverse;
+        //SensGravity = rb.gravityScale;
     }
 }
