@@ -9,30 +9,38 @@ public class Stars_Following : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField]float speed;
     float distance;
-    bool Following = false;
-    
-    //[SerializeField] GameObject Star;
-    //float distanceStar;
+    [SerializeField]bool following = false;
+    [SerializeField] public int starHealth =0;
+    BoxCollider2D bc;
 
-    // Start is called before the first frame update
+
     void Start()
     {
-       
+        bc = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        distance = Vector2.Distance(transform.position, player.transform.position);
+        
         //distanceStar = Vector2.Distance(transform.position, Star.transform.position);
-        if (Following)
+        if (following )
         {
+            distance = Vector2.Distance(transform.position, player.transform.position);
             FollowingStar();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Following = true;
+        if (collision.gameObject.CompareTag("Player") && starHealth <=3)
+        {
+            
+            following = true;
+            starHealth++;
+            bc.enabled = false;
+
+        }
+        
         
     }
 

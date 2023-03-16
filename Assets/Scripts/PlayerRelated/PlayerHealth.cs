@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public SwitchGravity switchG;
-    
+   
+
     //[SerializeField] Health healthBarRef;
     Rigidbody2D rb;
     Animator animController;
@@ -19,6 +20,8 @@ public class PlayerHealth : MonoBehaviour
 
     
     [SerializeField] Health healthBar;
+
+    [SerializeField] Stars_Following starFollowing;
     
 
 
@@ -34,12 +37,17 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(starFollowing.starHealth);
         if (Input.GetKeyDown(KeyCode.C))
         {
             TakeDamage(20);
 
         }
-        if (currentHealth <= 0)
+        //if (currentHealth <= 0)
+       // {
+       //     Death();
+        //}
+        if (starFollowing.starHealth < 0)
         {
             Death();
         }
@@ -49,7 +57,7 @@ public class PlayerHealth : MonoBehaviour
         if (other.CompareTag("Sprikes"))
         {
            
-            TakeDamage(100);
+            TakeDamage(3);
         }
         
     }
@@ -66,15 +74,17 @@ public class PlayerHealth : MonoBehaviour
 
 IEnumerator Damage()
 {
-        TakeDamage(2);
+        TakeDamage(1);
         yield return new WaitForSeconds(20f);
     
 }
 
 private void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
+        //currentHealth -= damage;
+        starFollowing.starHealth-= damage;
+        //healthBar.SetHealth(currentHealth);
+        starFollowing.starHealth--;
     }
 
     public void Death()
