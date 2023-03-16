@@ -10,6 +10,7 @@ TagManager:
   - GravityDown
   - DamageZone
   - ButtonChangeZone
+  - FollowingStar
   layers:
   - Default
   - TransparentFX
