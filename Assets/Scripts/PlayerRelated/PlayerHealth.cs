@@ -12,17 +12,29 @@ public class PlayerHealth : MonoBehaviour
     Rigidbody2D rb;
     Animator animController;
 
-    private int maxHealth = 100;
-    public int currentHealth = 0;
+    //private int maxHealth = 100;
+    //public int currentHealth = 0;
     Vector2 ref_velocity = Vector2.zero;
     public Vector3 PosRespawn = Vector3.zero;
     public bool Respawn = false;
 
-    
-    [SerializeField] Health healthBar;
+    public bool dead = false;
 
-    [SerializeField] Stars_Following starFollowing;
     
+    //[SerializeField] Health healthBar;
+
+   // [SerializeField] Stars_Following starFollowing;
+
+
+
+
+    public float amount = 0;
+    public float Life = 0;
+
+
+
+
+
 
 
     // Start is called before the first frame update
@@ -30,66 +42,71 @@ public class PlayerHealth : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animController= GetComponent<Animator>();
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        //currentHealth = maxHealth;
+        //healthBar.SetMaxHealth(maxHealth);
         SetPosRespawn(PosRespawn);
     }
 
     private void Update()
     {
-        Debug.Log(starFollowing.starHealth);
+       // Debug.Log(starFollowing.starHealth);
         if (Input.GetKeyDown(KeyCode.C))
         {
-            TakeDamage(20);
+            TakeDamage(1);
 
         }
-        //if (currentHealth <= 0)
-       // {
-       //     Death();
-        //}
-        if (starFollowing.starHealth < 0)
+        /*if (currentHealth <= 0)
+       {
+            Death();
+        }*/
+      
+
+        if (Life < 0)
         {
             Death();
         }
+
+        
+
+
+
+
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Sprikes"))
         {
-           
-            TakeDamage(3);
+            TakeDamage(2);
         }
-        
-    }
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.CompareTag("DamageZone"))
+         if (other.CompareTag("DamageZone"))
         {
            
-                    StartCoroutine(Damage());
+          TakeDamage(1);
                
-        }         
+        }  
+    }
+    
+
+    public void Amount()
+    {
+        amount += 1;
 
     }
 
-IEnumerator Damage()
-{
-        TakeDamage(1);
-        yield return new WaitForSeconds(20f);
-    
-}
 
 private void TakeDamage(int damage)
     {
         //currentHealth -= damage;
-        starFollowing.starHealth-= damage;
+        Life -= damage;
+        //  starFollowing.starHealth-= damage;
         //healthBar.SetHealth(currentHealth);
-        starFollowing.starHealth--;
+        //  starFollowing.starHealth--;
+        
     }
 
     public void Death()
     {
-        
+        dead = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         animController.SetBool("isDead", true);
         if (Input.GetKeyDown(KeyCode.Space))
@@ -97,7 +114,7 @@ private void TakeDamage(int damage)
             
             Respawn = true;
             gameObject.transform.position = PosRespawn;
-            healthBar.SetMaxHealth(maxHealth);
+            //healthBar.SetMaxHealth(maxHealth);
             
            
             
@@ -108,11 +125,12 @@ private void TakeDamage(int damage)
                 switchG.Flip();
             }
 
-            
-            currentHealth = 100;
+            Life = 1;
+            //currentHealth = 100; On reset la vie
             animController.SetBool("isDead", false);
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             Respawn = false;
+            dead = false;
 
         }
     }
