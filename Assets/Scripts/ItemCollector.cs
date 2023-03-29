@@ -20,12 +20,12 @@ public class ItemCollector : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
       
-        if (collision.gameObject.CompareTag("Star"))
-        { 
+            if (collision.gameObject.CompareTag("Star"))
+            { 
                 Destroy(collision.gameObject);
                 Stars++;
                 starsText.text = Stars + "";
-        }
+            }
 
         if (collision.gameObject.CompareTag("ButtonChangeZone"))
         {
@@ -33,6 +33,7 @@ public class ItemCollector : MonoBehaviour
             changeZone.change = false;
             
         }
+        
 
     }
     

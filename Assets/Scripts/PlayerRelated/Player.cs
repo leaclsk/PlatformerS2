@@ -101,7 +101,11 @@ public class Player : MonoBehaviour
         animController.SetBool("Jumping", false);        
     }
 
-    
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        can_jump = false;
+    }
+
     public void StarCollected()
     {
        

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
     public SwitchGravity switchG;
-   
+
 
     //[SerializeField] Health healthBarRef;
     Rigidbody2D rb;
@@ -20,16 +20,9 @@ public class PlayerHealth : MonoBehaviour
 
     public bool dead = false;
 
-    
-    //[SerializeField] Health healthBar;
-
-   // [SerializeField] Stars_Following starFollowing;
-
-
-
 
     public float amount = 0;
-    public float Life = 0;
+    public int Life = 0;
 
 
 
@@ -41,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animController= GetComponent<Animator>();
+        animController = GetComponent<Animator>();
         //currentHealth = maxHealth;
         //healthBar.SetMaxHealth(maxHealth);
         SetPosRespawn(PosRespawn);
@@ -49,7 +42,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
-       // Debug.Log(starFollowing.starHealth);
+        // Debug.Log(starFollowing.starHealth);
         if (Input.GetKeyDown(KeyCode.C))
         {
             TakeDamage(1);
@@ -59,14 +52,14 @@ public class PlayerHealth : MonoBehaviour
        {
             Death();
         }*/
-      
+
 
         if (Life < 0)
         {
             Death();
         }
 
-        
+
 
 
 
@@ -78,14 +71,20 @@ public class PlayerHealth : MonoBehaviour
         {
             TakeDamage(2);
         }
-         if (other.CompareTag("DamageZone"))
+        if (other.CompareTag("DamageZone"))
         {
-           
-          TakeDamage(1);
-               
-        }  
+
+            TakeDamage(1);
+
+        }
+        if (other.CompareTag("Ennemi"))
+        {
+
+            TakeDamage(1);
+
+        }
     }
-    
+
 
     public void Amount()
     {
@@ -94,14 +93,13 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-private void TakeDamage(int damage)
+    private void TakeDamage(int damage)
     {
         //currentHealth -= damage;
         Life -= damage;
-        //  starFollowing.starHealth-= damage;
         //healthBar.SetHealth(currentHealth);
-        //  starFollowing.starHealth--;
         
+
     }
 
     public void Death()
@@ -111,14 +109,14 @@ private void TakeDamage(int damage)
         animController.SetBool("isDead", true);
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            
+
             Respawn = true;
             gameObject.transform.position = PosRespawn;
             //healthBar.SetMaxHealth(maxHealth);
-            
-           
-            
-            if(switchG.SensGravity < 0)
+
+
+
+            if (switchG.SensGravity < 0)
             {
                 rb.gravityScale = 3;
                 switchG.Rotation();

@@ -5,87 +5,93 @@ using UnityEngine;
 public class OrganicHealth : MonoBehaviour
 {
     [SerializeField] PlayerHealth playerH;
-    [SerializeField] GameObject playerRef;
+    [SerializeField] float speed;
+
     Vector3 refVelocity = Vector3.zero;
-    [SerializeField] float smoothTime;
-    private bool touched = false;
-    [SerializeField] private float offset;
-
-    [SerializeField] float speed = 5f;
-    float distance;
-    float etoileDistance;
-
-    [SerializeField] bool followingS = true;
-
     
-  
-    void Update()
+
+
+    [SerializeField] Transform playerPosition;
+    //[SerializeField] bool followingS = true;
+
+    GameObject[] positionetoile = new GameObject[6];
+    int i = -1;
+    int step = -1;
+
+    int direction = 0;
+
+
+   
+    private void Start()
     {
-
-        if (touched == true)
-        {
-            if (followingS)
-            {
-              FollowingStar(1);
-            }
- 
-        }
-
-        if(playerH.dead)
-        {
-            followingS = false;
-            Destroy(gameObject);
-        }
-      
+        positionetoile[0] = new GameObject();
+        positionetoile[1] = new GameObject();
+        positionetoile[2] = new GameObject();
+        positionetoile[3] = new GameObject();
+        positionetoile[4] = new GameObject();
+        positionetoile[5] = new GameObject();
     }
 
-    //faire un tableau de 3 cases, quand on récupère 1 étoile elle prend la position de la case 0, l'autre la case 2 etc. on lui donne la distance qu'on veut entre elle et le player et pour chaque étoile suite on multiplie par le nombre d'étoile. 
-    // Quand on perd une étoile, la dernière part et la dernière case se vide.
+
+    private void Update()
+    {
+        direction = gameObject.GetComponent<SpriteRenderer>().flipX ? 1 : -1 ;
+        for (int j = 0; j < positionetoile.Length; j++)
+        {
+
+            if (j == 0)
+            {
+                positionetoile[j].transform.position = new Vector2(Mathf.Lerp(positionetoile[j].transform.position.x, transform.position.x - step*direction, speed * Time.deltaTime), Mathf.Lerp(positionetoile[j].transform.position.y, transform.position.y, speed * Time.deltaTime));
+            }
+            else
+            {
+                positionetoile[j].transform.position = new Vector2(Mathf.Lerp(positionetoile[j].transform.position.x, positionetoile[j-1].transform.position.x - step*direction, speed * Time.deltaTime), Mathf.Lerp(positionetoile[j].transform.position.y, positionetoile[j-1].transform.position.y, speed * Time.deltaTime));
+            }
+
+        }
+        step = -1;
+
+        //showtab();
+
+        /*for( int j = 0 ; j < positionetoile.Length ; j++)
+        {
+            
+            Vector2 direction = gameObject.transform.position - transform.position;
+            positionetoile[j].transform.position = Vector2.MoveTowards(positionetoile[j].transform.position, new Vector2(gameObject.transform.position.x - step, gameObject.transform.position.y + 2), speed * Time.deltaTime);
+            step += 1;
+
+            //positionetoile[j].transform.position = new Vector2(gameObject.transform.position.x - 2, gameObject.transform.position.y);
+
+        }
+        step = -1;
+        */
+
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && playerH.Life < 3)
+        if (collision.CompareTag("FollowingStar") && playerH.Life < 3)
         {
-            if (!touched)
-            {
-                
-                touched = true;
-                playerH.Life += 1;
-               
-            }
-            
-            if (playerH.Life == 1)
-            {
-                FollowingStar(3);
-                touched = true;
-            }
-            /*
-                            if (playerH.Life == 3)
-                            {
+            i++;
+            positionetoile[i] = collision.gameObject;
+            collision.gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+            playerH.Life++;
 
-                                FollowingStar(5);
-                                touched = true;
-                            }*/
+
+
 
         }
 
-        
 
     }
-    
 
-    void FollowingStar(float distanceMax)
+    void showtab ()
     {
-  
-            distance = Vector2.Distance(transform.position, playerRef.transform.position);
-
-            if (distance > distanceMax)
-            {
-                Vector2 direction = playerRef.transform.position - transform.position;
-                transform.position = Vector2.MoveTowards(this.transform.position, playerRef.transform.position, speed * Time.deltaTime);
-            }
-
+        for (int i = 0; i < positionetoile.Length; i++)
+        {
+            Debug.Log("ETOILE " + i + " " + positionetoile[i].transform.position);
+        }
     }
+
+
 }
-
-
