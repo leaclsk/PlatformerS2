@@ -12,6 +12,9 @@ public class OpenChest : MonoBehaviour
     [SerializeField] ItemCollector itemCollector;
 
     [SerializeField] int starAmount;
+    
+
+    StarCoin starCoin;
 
     // Start is called before the first frame update
     void Start()
@@ -33,13 +36,16 @@ public class OpenChest : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             isRange = true;
+            
         }
     }
     private void Chestopening()
     {
         animator.SetTrigger("ChestOpen");
-        itemCollector.Stars = itemCollector.Stars + starAmount;
-        starsText.text = itemCollector.Stars + "";
+        starCoin.Loot();
+        
+        //itemCollector.Stars = itemCollector.Stars + starAmount;
+        //starsText.text = itemCollector.Stars + "";
         isRange = false;
     }
 
