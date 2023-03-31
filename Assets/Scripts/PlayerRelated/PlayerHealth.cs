@@ -24,6 +24,8 @@ public class PlayerHealth : MonoBehaviour
     public float amount = 0;
     public int Life = 0;
 
+    OrganicHealth organicHealth;
+
 
 
 
@@ -69,20 +71,21 @@ public class PlayerHealth : MonoBehaviour
     {
         if (other.CompareTag("Sprikes"))
         {
-            TakeDamage(2);
+            TakeDamage(1);
         }
+
         if (other.CompareTag("DamageZone"))
         {
-
             TakeDamage(1);
-
         }
+
         if (other.CompareTag("Ennemi"))
         {
-
             TakeDamage(1);
-
+            
         }
+
+        
     }
 
 
@@ -93,13 +96,18 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    private void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
-        //currentHealth -= damage;
-        Life -= damage;
-        //healthBar.SetHealth(currentHealth);
-        
+       Life -= damage;
+       Debug.Log("touché");
 
+       //currentHealth -= damage;
+       
+       //healthBar.SetHealth(currentHealth);
+
+       //organicHealth.positionetoile[0] = new GameObject();
+    
+            
     }
 
     public void Death()

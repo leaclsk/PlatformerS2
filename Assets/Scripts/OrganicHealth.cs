@@ -14,8 +14,8 @@ public class OrganicHealth : MonoBehaviour
     [SerializeField] Transform playerPosition;
     //[SerializeField] bool followingS = true;
 
-    GameObject[] positionetoile = new GameObject[6];
-    int i = -1;
+    public GameObject[] positionetoile = new GameObject[6];
+    public int i = -1;
     int step = -1;
 
     int direction = 0;
@@ -70,21 +70,26 @@ public class OrganicHealth : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("FollowingStar") && playerH.Life < 3)
+        if (collision.CompareTag("FollowingStar") && playerH.Life <= 3)
         {
             i++;
             positionetoile[i] = collision.gameObject;
             collision.gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
             playerH.Life++;
-
-
+            
 
 
         }
 
+        // if(collision.CompareTag("Ennemi"))
+        //{
+        //playerH.TakeDamage(2);
+
+        //positionetoile[i] = new GameObject();
+        //i--;
+        //}
 
     }
-
     void showtab ()
     {
         for (int i = 0; i < positionetoile.Length; i++)

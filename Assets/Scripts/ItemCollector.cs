@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ItemCollector : MonoBehaviour
 {
-    [SerializeField] private int Stars = 0;
+    [SerializeField] public int Stars = 0;
     
     [SerializeField] private Text starsText;
     [SerializeField] ChangeZone changeZone;
@@ -36,5 +36,6 @@ public class ItemCollector : MonoBehaviour
         
 
     }
+
     
 }
