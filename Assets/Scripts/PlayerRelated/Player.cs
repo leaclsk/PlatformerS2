@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     //[Range(0, 1)][SerializeField] float smooth_time = 0.5f;
 
 
-
+    
 
 
     // Start is called before the first frame update
@@ -89,6 +89,10 @@ public class Player : MonoBehaviour
             
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, maxFallSpeed));
         }
+
+        
+
+        
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -106,11 +110,14 @@ public class Player : MonoBehaviour
         can_jump = false;
     }
 
-    public void StarCollected()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-       
-
+        if (collision.gameObject.tag == "Ennemi")
+        {
+            //rb.velocity += Vector2.up * 10f;
+            rb.velocity = new Vector2(rb.velocity.x*-15f, rb.velocity.y*4f);
+        }
+    }
     }
 
-    
-}
+

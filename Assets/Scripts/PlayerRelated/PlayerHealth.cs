@@ -67,23 +67,29 @@ public class PlayerHealth : MonoBehaviour
 
 
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        if (collision.gameObject.tag == "Sprikes")
+        {
+            TakeDamage(1);
+        }
+
+        if (collision.gameObject.tag == "DamageZone")
+        {
+            TakeDamage(1);
+        }
+
+        if (collision.gameObject.tag == "Ennemi")
+        {
+            TakeDamage(1);
+
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Sprikes"))
-        {
-            TakeDamage(1);
-        }
-
-        if (other.CompareTag("DamageZone"))
-        {
-            TakeDamage(1);
-        }
-
-        if (other.CompareTag("Ennemi"))
-        {
-            TakeDamage(1);
-            
-        }
+        
 
         
     }
