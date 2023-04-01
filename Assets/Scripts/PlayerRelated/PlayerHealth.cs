@@ -105,7 +105,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
        Life -= damage;
-       Debug.Log("touché");
+       
        organicHealth.positionetoile[organicHealth.i] = new GameObject();
        organicHealth.i--;
 
