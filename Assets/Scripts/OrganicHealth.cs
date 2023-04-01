@@ -51,6 +51,8 @@ public class OrganicHealth : MonoBehaviour
         }
         step = -1;
 
+        
+
         //showtab();
 
         /*for( int j = 0 ; j < positionetoile.Length ; j++)
@@ -70,14 +72,12 @@ public class OrganicHealth : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("FollowingStar") && playerH.Life <= 3)
+        if (collision.CompareTag("FollowingStar") && playerH.Life < 3)
         {
             i++;
             positionetoile[i] = collision.gameObject;
             collision.gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
             playerH.Life++;
-            
-
 
         }
 

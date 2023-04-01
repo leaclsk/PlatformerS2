@@ -24,7 +24,7 @@ public class PlayerHealth : MonoBehaviour
     public float amount = 0;
     public int Life = 0;
 
-    OrganicHealth organicHealth;
+    [SerializeField] OrganicHealth organicHealth;
 
 
 
@@ -100,14 +100,9 @@ public class PlayerHealth : MonoBehaviour
     {
        Life -= damage;
        Debug.Log("touché");
+       organicHealth.positionetoile[organicHealth.i] = new GameObject();
+       organicHealth.i--;
 
-       //currentHealth -= damage;
-       
-       //healthBar.SetHealth(currentHealth);
-
-       //organicHealth.positionetoile[0] = new GameObject();
-    
-            
     }
 
     public void Death()

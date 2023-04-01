@@ -8,7 +8,6 @@ using UnityEngine.UI;
 public class StarCoin : MonoBehaviour
 {
 
-    bool open = false;
 
     #region Loot Spawn
     [SerializeField]private List<GameObject> loot = new List<GameObject>();
@@ -20,7 +19,7 @@ public class StarCoin : MonoBehaviour
     private int maxNumber = 20;
     [SerializeField]
     private Transform spawnPoint;
-    private bool hasBeenCollected = false;
+    public bool hasBeenCollected = false;
 
     [SerializeField]
     [Header("Click to Spawn")]
@@ -29,6 +28,7 @@ public class StarCoin : MonoBehaviour
 
     #region Chest Open
     bool isRange = false;
+    bool canBeOpen = true;
     [SerializeField] Animator animator;
 
     [SerializeField] private Text starsText;
@@ -50,19 +50,25 @@ public class StarCoin : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && isRange)
+        if (Input.GetKeyDown(KeyCode.F) && isRange && canBeOpen)
         {
             Chestopening();
             spawnLoot = true;
+            canBeOpen = false;
+
+
         }
         
-        
+       if(canBeOpen)
+       {
             if (spawnLoot && !hasBeenCollected)
             {
                 spawnLoot = false;
                 Loot();
 
             }
+       }
+            
        
        
     }
@@ -71,32 +77,29 @@ public class StarCoin : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            isRange = true;
-         
+            isRange = true; 
         }
     }
 
     private void Chestopening()
     {
-       
+        
         animator.SetTrigger("ChestOpen");
         Loot();
-        
+         isRange = false;
 
         //itemCollector.Stars = itemCollector.Stars + starAmount;
         //starsText.text = itemCollector.Stars + "";
-        isRange = false;
+       
     }
 
     #region Loot 
     public void Loot()
     {
         
-        
             hasBeenCollected = true;
             int number = Random.Range(minNumber, maxNumber);
             StartCoroutine(CreateLoot(number));
-        
            
     }
 

@@ -25,6 +25,7 @@ public class ItemCollector : MonoBehaviour
                 Destroy(collision.gameObject);
                 Stars++;
                 starsText.text = Stars + "";
+                //collision.gameObject.GetComponent<B>().enabled = false;
             }
 
         if (collision.gameObject.CompareTag("ButtonChangeZone"))

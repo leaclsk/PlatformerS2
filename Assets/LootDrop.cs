@@ -9,43 +9,49 @@ public class LootDrop : MonoBehaviour
     private Vector3 startPosition;
 
     StarCoin starCoin;
+
+
     void Start()
     {
+        rb = this.GetComponent<Rigidbody2D>();
+        rb.isKinematic = true;
+        //rb.useGravity = false;
+
         startPosition = this.transform.position;
         velocity *= Random.Range(4f, 6f);
-        velocity += new Vector3(Random.Range(-1f, 1f), 0, 0);
-
-        rb = this.GetComponent<Rigidbody2D>();
-        //rb.useGravity = false;
-        rb.isKinematic = true;
-
+        velocity += new Vector3(Random.Range(1f, 3f), Random.Range(1f, 3f), 0);
 
     }
 
    
     void Update()
     {
-        if (starCoin.spawnLoot)
-        {
-            rb.position = velocity * Time.deltaTime;
 
-            if (velocity.y < -4f)
-            {
+
+                if (velocity.y < -4f)
+                {
                 velocity.y = -4f;
-            }
-            else
-            {
-                velocity -= Vector3.up * 5 * Time.deltaTime;
-            }
+                }
 
-            if (Mathf.Abs(rb.position.y - startPosition.y) < 0.25f && velocity.y < 0f)
-            {
+                else
+                {
+                velocity -= Vector3.up * 5 * Time.deltaTime;
+                }
+
+                if (Mathf.Abs(rb.position.y - startPosition.y) < 0.25f && velocity.y < 0f)
+                {
+
+                Debug.Log("fini");
                 //rb.useGravity = true;
                 rb.isKinematic = false;
                 rb.velocity = velocity;
                 this.enabled = false;
-            }
-        }
+          
+                }
+
+            
+            
+        
        
     }
 }
