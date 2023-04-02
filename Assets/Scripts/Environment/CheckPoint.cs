@@ -12,7 +12,7 @@ public class CheckPoint : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            Debug.Log(heal.PosRespawn);
+            //Debug.Log(heal.PosRespawn);
             heal.PosRespawn = gameObject.transform.position;
             Destroy(gameObject);
 

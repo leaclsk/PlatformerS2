@@ -12,6 +12,8 @@ TagManager:
   - ButtonChangeZone
   - Ennemi
   - FollowingStar
+  - Ground
+  - Laser
   layers:
   - Default
   - TransparentFX

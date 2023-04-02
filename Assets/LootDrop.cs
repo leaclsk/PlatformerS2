@@ -18,8 +18,8 @@ public class LootDrop : MonoBehaviour
         //rb.useGravity = false;
 
         startPosition = this.transform.position;
-        velocity *= Random.Range(4f, 6f);
-        velocity += new Vector3(Random.Range(1f, 3f), Random.Range(1f, 3f), 0);
+        //velocity *= Random.Range(4f, 6f);
+        //velocity += new Vector3(Random.Range(1f, 3f), Random.Range(1f, 3f), 0);
 
     }
 
@@ -27,21 +27,20 @@ public class LootDrop : MonoBehaviour
     void Update()
     {
 
-
-                if (velocity.y < -4f)
+        
+                /*if (velocity.y < -4f)
                 {
                 velocity.y = -4f;
-                }
-
-                else
-                {
+                }*/
+             
+                
                 velocity -= Vector3.up * 5 * Time.deltaTime;
-                }
+                //velocity = new Vector2(rb.velocity.x * Random.Range(-4f, 6f), rb.velocity.y * Random.Range(4f, 6f));
+        
 
                 if (Mathf.Abs(rb.position.y - startPosition.y) < 0.25f && velocity.y < 0f)
                 {
 
-                Debug.Log("fini");
                 //rb.useGravity = true;
                 rb.isKinematic = false;
                 rb.velocity = velocity;

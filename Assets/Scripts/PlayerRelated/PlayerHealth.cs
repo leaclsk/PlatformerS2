@@ -89,9 +89,12 @@ public class PlayerHealth : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
 
-        
+        if (other.CompareTag("Laser"))
+        {
+            TakeDamage(1);
+        }
+
     }
 
 
@@ -112,10 +115,11 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public void Death()
-    {
+    {     
         dead = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         animController.SetBool("isDead", true);
+        rb.velocity = new Vector2(rb.velocity.x * -25f, rb.velocity.y * 6f);
         if (Input.GetKeyDown(KeyCode.Space))
         {
 
