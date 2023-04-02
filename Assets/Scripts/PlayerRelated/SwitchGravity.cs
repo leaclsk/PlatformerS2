@@ -26,36 +26,36 @@ public class SwitchGravity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // inverser la gravité.
+        // inverser la gravité avec cooldown.
         if(Time.time > nextSwitch)
         {
-            
+            GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+
             if (Input.GetKeyDown(KeyCode.E) && gravitySwitch)
             {
                  rb.gravityScale *= -1;
 
                  Rotation();
                  Flip();
-                 
 
-                GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 225, 25);
+                 GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 225, 25);
 
-                nextSwitch = Time.time + cooldownTime;
+                 nextSwitch = Time.time + cooldownTime;
             }
     
         }
-        if (Time.time > nextSwitch)
-        {
-            GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-        }
-
-
-
+        
+  
         SensGravity = rb.gravityScale;
         if(!inTheZone) gravitySwitch = true;
         else if(inTheZone) gravitySwitch = false;
-       
+
+        //cooldown UI grise 
+        if(!gravitySwitch) GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 225, 25);
+        
     }
+
+    //zones de gravité forcée
     private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.CompareTag("GravityUp") || collision.CompareTag("GravityDown"))
@@ -77,32 +77,8 @@ public class SwitchGravity : MonoBehaviour
         }
     }
 
-    /* void OnTriggerStay2D(Collider2D collision)
-     { 
-         if (collision.CompareTag("GravityUp"))
-         {
-             gravitySwitch = false;
-             rb.gravityScale = -3;
-             Flip();
-             Rotation();
 
-         }
-         if (collision.CompareTag("GravityDown"))
-         {
-             gravitySwitch = false;
-             rb.gravityScale = 3;
-             Flip();
-             Rotation();
-
-         }
-         else { gravitySwitch = true; }
-
-     }*/
-
-
-
-    // mettre le player à l'endroit : càd pas la tête collée au plafond mais à l'envers lorsque la 
-    //gravité est inversée.
+    // mettre le player à l'endroit 
     public void Rotation()
     {
         if(top == false){
