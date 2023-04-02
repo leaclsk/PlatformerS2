@@ -62,10 +62,6 @@ public class PlayerHealth : MonoBehaviour
         }
 
 
-
-
-
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -115,19 +111,18 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public void Death()
-    {     
+    {  
+        rb.velocity = new Vector2(rb.velocity.x * -25f, rb.velocity.y * 6f);  
         dead = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         animController.SetBool("isDead", true);
-        rb.velocity = new Vector2(rb.velocity.x * -25f, rb.velocity.y * 6f);
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
 
             Respawn = true;
             gameObject.transform.position = PosRespawn;
             //healthBar.SetMaxHealth(maxHealth);
-
-
 
             if (switchG.SensGravity < 0)
             {
