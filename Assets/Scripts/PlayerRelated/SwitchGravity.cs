@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SwitchGravity : MonoBehaviour
 {
@@ -10,8 +12,11 @@ public class SwitchGravity : MonoBehaviour
     public bool inTheZone = false;
     [SerializeField] public bool gravitySwitch = true;
     [SerializeField] public float SensGravity;
+    [SerializeField] float cooldownTime;
+    [SerializeField] float nextSwitch;
+    [SerializeField] private Image GravityCoolDown;
 
-  
+
     void Start()
     {
         gravitySwitch = true;
@@ -22,18 +27,30 @@ public class SwitchGravity : MonoBehaviour
     void Update()
     {
         // inverser la gravité.
-        if(gravitySwitch)
+        if(Time.time > nextSwitch)
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                rb.gravityScale *= -1;
-                
-                Rotation();
-                Flip();
-            }
             
+            if (Input.GetKeyDown(KeyCode.E) && gravitySwitch)
+            {
+                 rb.gravityScale *= -1;
+
+                 Rotation();
+                 Flip();
+                 
+
+                GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 225, 25);
+
+                nextSwitch = Time.time + cooldownTime;
+            }
+    
         }
-        
+        if (Time.time > nextSwitch)
+        {
+            GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        }
+
+
+
         SensGravity = rb.gravityScale;
         if(!inTheZone) gravitySwitch = true;
         else if(inTheZone) gravitySwitch = false;
@@ -44,15 +61,19 @@ public class SwitchGravity : MonoBehaviour
         if(collision.CompareTag("GravityUp") || collision.CompareTag("GravityDown"))
         {
             inTheZone = true;
+            //GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 225, 25);
+
         }
-        
-        
+
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("GravityUp") || collision.CompareTag("GravityDown"))
         {
             inTheZone = false;
+            //GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            
         }
     }
 
@@ -102,4 +123,6 @@ public class SwitchGravity : MonoBehaviour
         transform.localScale = inverse;
         //SensGravity = rb.gravityScale;
     }
+
+  
 }
