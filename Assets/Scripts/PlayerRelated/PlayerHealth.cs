@@ -94,7 +94,7 @@ public class PlayerHealth : MonoBehaviour
             {
                 TakeDamage(1);
                 nextdamage = Time.time + cooldownTime;
-                Debug.Log("touché");
+                //Debug.Log("touché");
             }
         }
     }
