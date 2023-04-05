@@ -44,8 +44,7 @@ public class SwitchGravity : MonoBehaviour
             }
     
         }
-        
-  
+
         SensGravity = rb.gravityScale;
         if(!inTheZone) gravitySwitch = true;
         else if(inTheZone) gravitySwitch = false;

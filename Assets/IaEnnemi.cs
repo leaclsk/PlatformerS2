@@ -68,4 +68,6 @@ public class IaEnnemi : MonoBehaviour
 
     //     transform.position = Vector2.MoveTowards(transform.position, points[i].position, speed * Time.deltaTime);
     // }
+
+    
 }

@@ -24,6 +24,9 @@ public class PlayerHealth : MonoBehaviour
     public float amount = 0;
     public int Life = 0;
 
+    [SerializeField] float cooldownTime;
+    [SerializeField] float nextdamage;
+
     [SerializeField] OrganicHealth organicHealth;
 
 
@@ -72,17 +75,30 @@ public class PlayerHealth : MonoBehaviour
             TakeDamage(1);
         }
 
-        if (collision.gameObject.tag == "DamageZone")
-        {
-            TakeDamage(1);
-        }
+        
 
         if (collision.gameObject.tag == "Ennemi")
         {
+            
             TakeDamage(1);
+
 
         }
     }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (Time.time > nextdamage)
+        {
+            if (collision.gameObject.tag == "DamageZone" && Life > -1)
+            {
+                TakeDamage(1);
+                nextdamage = Time.time + cooldownTime;
+                Debug.Log("touché");
+            }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
 
@@ -104,9 +120,16 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
        Life -= damage;
-       
-       organicHealth.positionetoile[organicHealth.i] = new GameObject();
-       organicHealth.i--;
+
+        if(organicHealth.positionetoile[organicHealth.i] != null)
+        {
+            Destroy(organicHealth.positionetoile[organicHealth.i]);
+            organicHealth.positionetoile[organicHealth.i] = new GameObject();
+            organicHealth.i--;
+        }
+        //Destroy(organicHealth.positionetoile[organicHealth.i]);
+        //organicHealth.positionetoile[organicHealth.i] = Destroy(gameObject);
+        //organicHealth.i--;
 
     }
 
@@ -145,4 +168,5 @@ public class PlayerHealth : MonoBehaviour
         gameObject.transform.position = PosRespawn;
     }
 
+    
 }
