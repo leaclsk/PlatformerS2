@@ -47,11 +47,12 @@ public class OpenChest : MonoBehaviour
     {
         animator.SetTrigger("ChestOpen");
         isRange = false;
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
         for (int i = 0; i < nombre; i++)
         {
             Rigidbody2D prop = Instantiate(rb, transform.position, transform.rotation);
-            prop.velocity = new Vector2(2, 5);
+            prop.velocity = new Vector2(Random.Range(-5, 5), Random.Range(3,5));
         }
         isRange = false;
 
