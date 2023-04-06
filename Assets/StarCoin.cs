@@ -9,22 +9,22 @@ public class StarCoin : MonoBehaviour
 {
 
 
-    #region Loot Spawn
-    [SerializeField]private List<GameObject> loot = new List<GameObject>();
-    [SerializeField]
-    [Range(1, 10)]
-    private int minNumber = 7;
-    [SerializeField]
-    [Range(2, 100)]
-    private int maxNumber = 20;
-    [SerializeField]
-    private Transform spawnPoint;
-    public bool hasBeenCollected = false;
+    //#region Loot Spawn
+    //[SerializeField]private List<GameObject> loot = new List<GameObject>();
+    //[SerializeField]
+    //[Range(1, 10)]
+    //private int minNumber = 7;
+    //[SerializeField]
+    //[Range(2, 100)]
+    //private int maxNumber = 20;
+    //[SerializeField]
+    //private Transform spawnPoint;
+    //public bool hasBeenCollected = false;
 
-    [SerializeField]
-    [Header("Click to Spawn")]
-    public bool spawnLoot = false;
-    #endregion
+    //[SerializeField]
+    //[Header("Click to Spawn")]
+    //public bool spawnLoot = false;
+    //#endregion
 
     #region Chest Open
     bool isRange = false;
@@ -37,37 +37,44 @@ public class StarCoin : MonoBehaviour
     [SerializeField] int starAmount;
 
     StarCoin starCoin;
+    [SerializeField]Rigidbody2D rb;
+
+    [SerializeField] int nombre;
     #endregion
 
 
-    private void OnValidate()
-    {
-        if(minNumber > maxNumber)
-        {
-            maxNumber = minNumber + 1;
-        }
-    }
+    //private void OnValidate()
+    //{
+    //    if(minNumber > maxNumber)
+    //    {
+    //        maxNumber = minNumber + 1;
+    //    }
+    //}
 
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F) && isRange && canBeOpen)
         {
             Chestopening();
-            spawnLoot = true;
+            //spawnLoot = true;
             canBeOpen = false;
 
 
         }
         
-       if(canBeOpen)
-       {
-            if (spawnLoot && !hasBeenCollected)
-            {
-                spawnLoot = false;
-                Loot();
+       //if(canBeOpen)
+       //{
+       //     if (spawnLoot && !hasBeenCollected)
+       //     {
+       //         spawnLoot = false;
+                
 
-            }
-       }
+       //     }
+       //}
             
        
        
@@ -84,9 +91,9 @@ public class StarCoin : MonoBehaviour
     private void Chestopening()
     {
         
-        animator.SetTrigger("ChestOpen");
-        Loot();
-         isRange = false;
+        
+
+
 
         //itemCollector.Stars = itemCollector.Stars + starAmount;
         //starsText.text = itemCollector.Stars + "";
@@ -94,25 +101,25 @@ public class StarCoin : MonoBehaviour
     }
 
     #region Loot 
-    public void Loot()
-    {
+    //public void Loot()
+    //{
         
-            hasBeenCollected = true;
-            int number = Random.Range(minNumber, maxNumber);
-            StartCoroutine(CreateLoot(number));
+    //        hasBeenCollected = true;
+    //        int number = Random.Range(minNumber, maxNumber);
+    //        StartCoroutine(CreateLoot(number));
            
-    }
+    //}
 
-    IEnumerator CreateLoot(int number)
-    {  
-        for( int i = 0 ; i < number ; i++)
-        {
-            GameObject tempLoot = Instantiate(loot[Random.Range(0, loot.Count)]);
-            tempLoot.transform.position = spawnPoint.position;
-            yield return new WaitForSeconds(0.1f);
+    //IEnumerator CreateLoot(int number)
+    //{  
+    //    for( int i = 0 ; i < number ; i++)
+    //    {
+    //        GameObject tempLoot = Instantiate(loot[Random.Range(0, loot.Count)]);
+    //        tempLoot.transform.position = spawnPoint.position;
+    //        yield return new WaitForSeconds(0.1f);
             
             
-        }
-    }
+    //    }
+    //}
     #endregion
 }

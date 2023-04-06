@@ -16,6 +16,10 @@ public class OpenChest : MonoBehaviour
 
     StarCoin starCoin;
 
+    [SerializeField] Rigidbody2D rb;
+
+    [SerializeField] int nombre;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,11 +46,19 @@ public class OpenChest : MonoBehaviour
     private void Chestopening()
     {
         animator.SetTrigger("ChestOpen");
-        starCoin.Loot();
-        
+        isRange = false;
+
+        for (int i = 0; i < nombre; i++)
+        {
+            Rigidbody2D prop = Instantiate(rb, transform.position, transform.rotation);
+            prop.velocity = new Vector2(2, 5);
+        }
+        isRange = false;
+
+        //starCoin.Loot();
         //itemCollector.Stars = itemCollector.Stars + starAmount;
         //starsText.text = itemCollector.Stars + "";
-        isRange = false;
+
     }
 
 
