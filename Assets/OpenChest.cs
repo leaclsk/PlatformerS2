@@ -7,23 +7,17 @@ public class OpenChest : MonoBehaviour
 {
     bool isRange = false;
     [SerializeField]Animator animator;
-
     [SerializeField] private Text starsText;
     [SerializeField] ItemCollector itemCollector;
-
-    [SerializeField] int starAmount;
-    
-
-    StarCoin starCoin;
-
+    [SerializeField] int starAmount; 
     [SerializeField] Rigidbody2D rb;
-
     [SerializeField] int nombre;
+    ParticleSystem ps;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        ps = gameObject.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -55,6 +49,9 @@ public class OpenChest : MonoBehaviour
             prop.velocity = new Vector2(Random.Range(-5, 5), Random.Range(3,5));
         }
         isRange = false;
+
+        ps.Stop();
+
 
         //starCoin.Loot();
         //itemCollector.Stars = itemCollector.Stars + starAmount;

@@ -123,8 +123,10 @@ public class PlayerHealth : MonoBehaviour
 
         if(organicHealth.positionetoile[organicHealth.i] != null)
         {
+            
             Destroy(organicHealth.positionetoile[organicHealth.i]);
             organicHealth.positionetoile[organicHealth.i] = new GameObject();
+            
             organicHealth.i--;
         }
         //Destroy(organicHealth.positionetoile[organicHealth.i]);
