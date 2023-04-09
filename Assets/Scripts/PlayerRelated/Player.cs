@@ -52,10 +52,39 @@ public class Player : MonoBehaviour
         if (Input.GetButtonDown("Jump") && can_jump)
         {
             is_jumping = true;
-            animController.SetBool("Jumping", true);
+            //animController.SetBool("Jumping", true);
+
+            
         }
 
-       
+        if(rb.gravityScale > 0)
+        {
+            if (!can_jump && rb.velocity.y > 0.1f)
+            {
+                animController.SetBool("Jumping", true);
+            }
+            if (rb.velocity.y < -0.1f)
+            {
+                animController.SetBool("Jumping", false);
+                animController.SetBool("Fall", true);
+
+            }
+        }
+        if (rb.gravityScale < 0)
+        {
+            if (!can_jump && rb.velocity.y < -0.1f)
+            {
+                animController.SetBool("Jumping", true);
+            }
+            if (rb.velocity.y > 0.1f)
+            {
+                animController.SetBool("Jumping", false);
+                animController.SetBool("Fall", true);
+
+            }
+        }
+
+
 
     }
     void FixedUpdate()
@@ -98,11 +127,8 @@ public class Player : MonoBehaviour
     {
         can_jump = true;
         animController.SetBool("Jumping", false);
-        
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {   
-        animController.SetBool("Jumping", false);        
+        animController.SetBool("Fall", false);
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
