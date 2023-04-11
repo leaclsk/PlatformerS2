@@ -125,9 +125,13 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        can_jump = true;
-        animController.SetBool("Jumping", false);
-        animController.SetBool("Fall", false);
+        if(collision.CompareTag("Ground"))
+        {
+            can_jump = true;
+            animController.SetBool("Jumping", false);
+            animController.SetBool("Fall", false);
+        }
+        
 
     }
 
