@@ -28,6 +28,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] float nextdamage;
 
     [SerializeField] OrganicHealth organicHealth;
+    ControllerCheck controlC;
 
 
 
@@ -42,7 +43,9 @@ public class PlayerHealth : MonoBehaviour
         animController = GetComponent<Animator>();
         //currentHealth = maxHealth;
         //healthBar.SetMaxHealth(maxHealth);
-        SetPosRespawn(PosRespawn);
+        //SetPosRespawn(PosRespawn);
+        PosRespawn = this.transform.position;
+        controlC = GetComponent<ControllerCheck>();
     }
 
     private void Update()
@@ -142,7 +145,7 @@ public class PlayerHealth : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         animController.SetBool("isDead", true);
         
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown(controlC.inputJump))
         {
 
             Respawn = true;
@@ -167,7 +170,7 @@ public class PlayerHealth : MonoBehaviour
     }
     public void SetPosRespawn(Vector3 Position)
     {
-        gameObject.transform.position = PosRespawn;
+        this.transform.position = PosRespawn;
     }
 
     
