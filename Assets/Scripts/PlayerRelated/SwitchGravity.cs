@@ -15,12 +15,14 @@ public class SwitchGravity : MonoBehaviour
     [SerializeField] float cooldownTime;
     [SerializeField] float nextSwitch;
     [SerializeField] private Image GravityCoolDown;
+    ControllerCheck controlC;
 
 
     void Start()
     {
         gravitySwitch = true;
         rb = GetComponent<Rigidbody2D>();
+        controlC = GetComponent<ControllerCheck>();
     }
     
     // Update is called once per frame
@@ -31,7 +33,7 @@ public class SwitchGravity : MonoBehaviour
         {
             GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
 
-            if (Input.GetKeyDown(KeyCode.E) && gravitySwitch)
+            if (Input.GetButtonDown(controlC.inputSwitch) && gravitySwitch)
             {
                  rb.gravityScale *= -1;
 

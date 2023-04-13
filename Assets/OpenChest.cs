@@ -13,6 +13,7 @@ public class OpenChest : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] int nombre;
     ParticleSystem ps;
+    [SerializeField] ControllerCheck controlC;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class OpenChest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F) && isRange)
+        if(Input.GetButtonDown(controlC.inputInteraction) && isRange)
         {
             Chestopening();
         }
