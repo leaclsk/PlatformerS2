@@ -257,13 +257,13 @@ public class Player : MonoBehaviour
     //    doubleJump = false;
     //}
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Ennemi")
-        {
-            rb.velocity = new Vector2(rb.velocity.x*-15f, rb.velocity.y*4f);
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Ennemi")
+    //    {
+    //        rb.velocity = new Vector2(rb.velocity.x*-15f, rb.velocity.y*4f);
+    //    }
+    //}
     private bool IsGrounded()
     {
         animController.SetBool("Fall", false);

@@ -78,19 +78,13 @@ public class PlayerHealth : MonoBehaviour
             TakeDamage(1);
         }
 
-        
-
         if (collision.gameObject.tag == "Ennemi")
         {
             
             TakeDamage(1);
 
-
         }
-    }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
         if (Time.time > nextdamage)
         {
             if (collision.gameObject.tag == "DamageZone" && Life > -1)
@@ -101,6 +95,11 @@ public class PlayerHealth : MonoBehaviour
             }
         }
     }
+   
+    //private void OnCollisionStay2D(Collision2D collision)
+    //{
+        
+    //}
 
     private void OnTriggerEnter2D(Collider2D other)
     {
