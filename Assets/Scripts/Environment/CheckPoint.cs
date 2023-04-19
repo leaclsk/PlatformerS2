@@ -14,6 +14,7 @@ public class CheckPoint : MonoBehaviour
     private void Start()
     {
         ps = gameObject.GetComponent<ParticleSystem>();
+        ps.Pause();
         GetComponent<SpriteRenderer>().color = new Color32(80, 80, 80, 255);
     }
 

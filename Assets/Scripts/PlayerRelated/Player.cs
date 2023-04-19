@@ -23,9 +23,9 @@ public class Player : MonoBehaviour
     #region JUMP
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask groundLayer;
-    float jumpForce = 12f;
+    //float jumpForce = 12f;
     [SerializeField] float jumpingPower = 16f;
-    [SerializeField] bool is_jumping = false;
+   // [SerializeField] bool is_jumping = false;
     [SerializeField] bool can_jump = false;
 
     bool doubleJump;

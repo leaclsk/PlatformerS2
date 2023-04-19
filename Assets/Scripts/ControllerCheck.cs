@@ -50,7 +50,7 @@ public class ControllerCheck : MonoBehaviour
         else
         {
             inputJump = "Jump";
-            inputSwitch = "SwitchGravity";
+            inputSwitch = "GravitySwitch";
             inputInteraction = "Interaction";
             // there is no controllers
         }
