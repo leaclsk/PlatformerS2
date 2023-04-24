@@ -26,31 +26,28 @@ public class Player : MonoBehaviour
     [SerializeField] LayerMask groundLayer;
     //float jumpForce = 12f;
     [SerializeField] float jumpingPower = 16f;
-   // [SerializeField] bool is_jumping = false;
+    //[SerializeField] bool is_jumping = false;
     [SerializeField] bool can_jump = false;
 
     bool doubleJump;
     #endregion
 
 
-    // Start is called before the first frame update
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         animController = GetComponent<Animator>();
-        controlC = GetComponent<ControllerCheck>();
-        
-        
-        //Debug.Log(Mathf.Lerp(current, target, 0));
-       
+        controlC = GetComponent<ControllerCheck>(); 
+           
         
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-        #region RUN
+       #region RUN
         horizontal_value = Input.GetAxis("Horizontal");
 
         if(horizontal_value > 0) sr.flipX = false;
@@ -73,6 +70,8 @@ public class Player : MonoBehaviour
         {
             doubleJump = false;
         }
+
+        // JUMP gravitée positive
         if(rb.gravityScale > 0)
         {
             if (Input.GetButtonDown(controlC.inputJump))
@@ -90,6 +89,7 @@ public class Player : MonoBehaviour
                 coyoteTimeCounter = 0f;
             }
         }
+        // JUMP gravitée negative
         if (rb.gravityScale < 0)
         {
             if (Input.GetButtonDown(controlC.inputJump))
@@ -109,42 +109,8 @@ public class Player : MonoBehaviour
         }
 
 
-
-
-
-
-        //if (Input.GetButtonDown("Jump") || doublejump)
-        //{
-        //    if(can_jump)
-        //    {
-        //        if (rb.gravityScale > 0)
-        //        {
-
-        //            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-        //            can_jump = false;
-        //            doublejump = !doublejump;
-
-
-        //        }
-        //        else if (rb.gravityScale < 0)
-        //        {
-
-        //            rb.AddForce(new Vector2(0, jumpForce * -1), ForceMode2D.Impulse);
-        //            can_jump = false;
-        //            doublejump = !doublejump;
-
-        //        }
-        //    }
-
-
-        //}
-
-        //if (is_jumping && can_jump)
-        //{
-
-        //}
         #region JUMP & FALL animation
-
+        // animations JUMP et lorque le player tombe
         if (rb.gravityScale > 0)
         {
             if ( rb.velocity.y > 0.1f)
@@ -176,7 +142,8 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
-        
+        #region OLD JUMP
+
         //if(Input.GetButtonDown("Jump"))
         //{
         //    if(can_jump)
@@ -211,12 +178,13 @@ public class Player : MonoBehaviour
 
         //    }
         //}
-
+#endregion 
 
         Vector2 target_velocity = new Vector2(horizontal_value * moveSpeed_horizontal * Time.fixedDeltaTime, rb.velocity.y);
         rb.velocity = Vector2.SmoothDamp(rb.velocity, target_velocity, ref ref_velocity, 0.05f);
 
         #region MAXFALLSPEED
+        //vitesse maximale à lauqelle le player peut tomber gravité positive et négative
         if (rb.velocity.y > 0 && switchG.SensGravity < 0)
         {
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Min(rb.velocity.y, maxFallSpeed * -1));
@@ -229,37 +197,9 @@ public class Player : MonoBehaviour
         #endregion
 
 
-
-
     }
-   /* private void OnTriggerStay2D(Collider2D collision)
-    {
-        if(collision.CompareTag("Ground"))
-        {
-            can_jump = true;
-            doubleJump = false;
-            
-            animController.SetBool("Jumping", false);
-            animController.SetBool("Fall", false);
-        }
-        
 
-    }*/
-
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    can_jump = false;
-    //    doubleJump = false;
-    //}
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.tag == "Ennemi")
-    //    {
-    //        rb.velocity = new Vector2(rb.velocity.x*-15f, rb.velocity.y*4f);
-    //    }
-    //}
-    private bool IsGrounded()
+    private bool IsGrounded()// vérifie si le player est au sol
     {
         animController.SetBool("Fall", false);
         return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);

@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 8208233421171336081}
   - component: {fileID: 8208233421171336110}
   - component: {fileID: 3563314058016516264}
+  - component: {fileID: 7850214066535647908}
   m_Layer: 0
   m_Name: Piup
   m_TagString: Player
@@ -179,7 +180,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   jumpingPower: 16
-  is_jumping: 0
   can_jump: 0
 --- !u!95 &3563314058016516254
 Animator:
@@ -295,6 +295,32 @@ MonoBehaviour:
   inputSwitch: 
   inputJump: 
   inputInteraction: 
+--- !u!114 &7850214066535647908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3563314058016516262}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e62d1855bb1434993addedab63fb50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runMaxSpeed: 46.44
+  runAcceleration: 44.1
+  runAccelAmount: 0
+  runDecceleration: 36.6
+  runDeccelAmount: 0
+  accelInAir: 0.235
+  deccelInAir: 0.438
+  doConserveMomentum: 0
+  rb: {fileID: 3563314058016516250}
+  _groundCheckPoint: {fileID: 8208233420519787135}
+  _groundCheckSize: {x: 0.49, y: 0.03}
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &8208233420519787134
 GameObject:
   m_ObjectHideFlags: 0
