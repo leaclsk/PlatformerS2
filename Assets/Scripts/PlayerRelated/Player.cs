@@ -12,7 +12,8 @@ public class Player : MonoBehaviour
     Animator animController;
     ControllerCheck controlC;
 
-
+    private float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
     
     Vector2 ref_velocity = Vector2.zero;
     float horizontal_value;
@@ -58,33 +59,25 @@ public class Player : MonoBehaviour
         animController.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
         #endregion
 
-        /*if (IsGrounded() && !Input.GetButton("Jump"))
+
+        if( IsGrounded() )
         {
-            doubleJump = false;
-            animController.SetBool("Jumping", false);
-            animController.SetBool("Fall", false);
+            coyoteTimeCounter = coyoteTime;
+
         }
-
-        if (Input.GetButtonDown("Jump"))
+        else
         {
-            if (IsGrounded() || doubleJump)
-            {
-                rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-
-                doubleJump = !doubleJump;
-            }
-        }*/
+            coyoteTimeCounter -= Time.deltaTime;
+        }
         if(IsGrounded() && !Input.GetButton(controlC.inputJump))
         {
             doubleJump = false;
-           // animController.SetBool("Jumping", false);
-           // animController.SetBool("Fall", false);
         }
         if(rb.gravityScale > 0)
         {
             if (Input.GetButtonDown(controlC.inputJump))
             {
-                if (IsGrounded() || doubleJump)
+                if (coyoteTimeCounter > 0f || doubleJump)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
 
@@ -94,13 +87,14 @@ public class Player : MonoBehaviour
             if (Input.GetButtonUp(controlC.inputJump) && rb.velocity.y > 0f)
             {
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+                coyoteTimeCounter = 0f;
             }
         }
         if (rb.gravityScale < 0)
         {
             if (Input.GetButtonDown(controlC.inputJump))
             {
-                if (IsGrounded() || doubleJump)
+                if (coyoteTimeCounter > 0f || doubleJump)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, -jumpingPower);
 
@@ -110,6 +104,7 @@ public class Player : MonoBehaviour
             if (Input.GetButtonUp(controlC.inputJump) && rb.velocity.y < 0f)
             {
                 rb.velocity = new Vector2(rb.velocity.x, -rb.velocity.y * 0.5f);
+                coyoteTimeCounter = 0f;
             }
         }
 
