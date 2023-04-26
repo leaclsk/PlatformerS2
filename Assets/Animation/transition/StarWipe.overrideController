@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: StarWipe
+  m_Controller: {fileID: 9100000, guid: be3b2d6626dcb4642b92a3a2f9998f0a, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 6880314b085c4d34d9e4efdf3afe6629, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7610df9d84070404b93d03774a9865c5, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1c488991e5a35a44fadbc66f136766ae, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3c516fe94c80c0145924adadaace4b93, type: 2}
