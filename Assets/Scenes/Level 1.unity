@@ -9214,9 +9214,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6935958406026453696, guid: e628f2c79ac77a74aa8820ee8b2d1d59, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 63.6865
+      objectReference: {fileID: 0}
+    - target: {fileID: 6935958406026453696, guid: e628f2c79ac77a74aa8820ee8b2d1d59, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 98
+      objectReference: {fileID: 0}
+    - target: {fileID: 6935958406026453696, guid: e628f2c79ac77a74aa8820ee8b2d1d59, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -4.7798
+      objectReference: {fileID: 0}
+    - target: {fileID: 6935958406026453697, guid: e628f2c79ac77a74aa8820ee8b2d1d59, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 862d3805eadae69418c2358d8f71e0c0, type: 3}
+    - target: {fileID: 6935958406026453697, guid: e628f2c79ac77a74aa8820ee8b2d1d59, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 39
+      objectReference: {fileID: 0}
     - target: {fileID: 6935958406351153153, guid: e628f2c79ac77a74aa8820ee8b2d1d59, type: 3}
       propertyPath: m_Name
-      value: DamageZone
+      value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 6935958406351153162, guid: e628f2c79ac77a74aa8820ee8b2d1d59, type: 3}
       propertyPath: m_Pivot.x
