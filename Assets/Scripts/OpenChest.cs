@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class OpenChest : MonoBehaviour
 {
+    //[SerializeField] Player player;
+    [SerializeField] ControllerCheck controllerCheck;
     bool isRange = false;
     [SerializeField] Animator animator;
     [SerializeField] private Text starsText;
@@ -33,8 +35,10 @@ public class OpenChest : MonoBehaviour
     void Start()
     {
         _startPos = transform.position;
+        //controllerCheck = GetComponent<ControllerCheck>();
         ps = gameObject.GetComponent<ParticleSystem>();
         tr = gameObject.GetComponent<Transform>();
+
         if(shaking)
         {
             Begin();
@@ -52,19 +56,10 @@ public class OpenChest : MonoBehaviour
         StartCoroutine(Shake());
     }
 
-        // Update is called once per frame
-        void Update()
+     
+    void Update()
     {
-        //if (shaking)
-        //{
-        //    transform.position = new Vector3(-1, 0f, 0f);
-        //    transform.position = new Vector3(1, 0f, 0f);
-        //    transform.position = new Vector3(1.5f, 0f, 0f);
-
-        //}
-
-
-        if (Input.GetKeyDown(KeyCode.F) && isRange)
+        if (Input.GetButton(controllerCheck.inputInteraction) && isRange)
         {
             Chestopening();
         }
@@ -93,8 +88,6 @@ public class OpenChest : MonoBehaviour
 
         ps.Stop();
         shaking = false;
-
-
 
         //starCoin.Loot();
         //itemCollector.Stars = itemCollector.Stars + starAmount;

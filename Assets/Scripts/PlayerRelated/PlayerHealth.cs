@@ -84,6 +84,12 @@ public class PlayerHealth : MonoBehaviour
             TakeDamage(1);
 
         }
+        if (collision.gameObject.tag == "DriftZone")
+        {
+
+            TakeDamage(3);
+
+        }
 
         if (Time.time > nextdamage)
         {
