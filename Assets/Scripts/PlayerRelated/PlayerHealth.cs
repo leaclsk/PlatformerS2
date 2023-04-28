@@ -86,7 +86,7 @@ public class PlayerHealth : MonoBehaviour
         }
         if (collision.gameObject.tag == "DriftZone")
         {
-
+            Debug.Log("touché");
             TakeDamage(3);
 
         }
@@ -95,6 +95,7 @@ public class PlayerHealth : MonoBehaviour
         {
             if (collision.gameObject.tag == "DamageZone" && Life > -1)
             {
+                Debug.Log("o");
                 TakeDamage(1);
                 nextdamage = Time.time + cooldownTime;
                 //Debug.Log("touché");

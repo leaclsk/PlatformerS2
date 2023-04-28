@@ -16,7 +16,7 @@ public class OpenChest : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] int nombre;
     ParticleSystem ps;
-    [SerializeField] Transform tr;
+    //[SerializeField] Transform tr;
 
     [Header("Info")]
     private Vector3 _startPos;
@@ -37,7 +37,7 @@ public class OpenChest : MonoBehaviour
         _startPos = transform.position;
         //controllerCheck = GetComponent<ControllerCheck>();
         ps = gameObject.GetComponent<ParticleSystem>();
-        tr = gameObject.GetComponent<Transform>();
+        //tr = gameObject.GetComponent<Transform>();
 
         if(shaking)
         {
