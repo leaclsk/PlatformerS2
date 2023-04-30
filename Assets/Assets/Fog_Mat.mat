@@ -73,6 +73,6 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color_1: {r: 1, g: 1, b: 1, a: 1}
     - _Color_2: {r: 1, g: 1, b: 1, a: 0}
-    - _Fog_Size: {r: -60.39, g: -60, b: 0, a: 0}
+    - _Fog_Size: {r: 120.84, g: 120.84, b: 0, a: 0}
     - _Fog_Speed: {r: 0.01, g: 0.01, b: 0, a: 0}
   m_BuildTextureStacks: []

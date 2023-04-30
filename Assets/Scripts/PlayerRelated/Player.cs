@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     //[SerializeField] bool is_jumping = false;
     [SerializeField] bool can_jump = false;
 
+    bool jump;
     bool doubleJump;
     #endregion
 
@@ -56,6 +57,9 @@ public class Player : MonoBehaviour
         animController.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
         #endregion
 
+        //if (moveSpeed_horizontal < 0) moveSpeed_horizontal = 0;
+        //var dir = transform.position - hit.transform.position;
+        //transform.position += dir.normalized * movemagnitude;
 
         if( IsGrounded() )
         {
@@ -94,15 +98,17 @@ public class Player : MonoBehaviour
         {
             if (Input.GetButtonDown(controlC.inputJump))
             {
-                if (coyoteTimeCounter > 0f || doubleJump)
+                if (coyoteTimeCounter > 0f || doubleJump)                  
                 {
+   
                     rb.velocity = new Vector2(rb.velocity.x, -jumpingPower);
-
+                 
                     doubleJump = !doubleJump;
                 }
             }
             if (Input.GetButtonUp(controlC.inputJump) && rb.velocity.y < 0f)
             {
+               
                 rb.velocity = new Vector2(rb.velocity.x, -rb.velocity.y * 0.5f);
                 coyoteTimeCounter = 0f;
             }
@@ -110,12 +116,19 @@ public class Player : MonoBehaviour
 
 
         #region JUMP & FALL animation
-        // animations JUMP et lorque le player tombe
+       
+            // animations JUMP et lorque le player tombe
         if (rb.gravityScale > 0)
-        {
+            {
             if ( rb.velocity.y > 0.1f)
             {
                 animController.SetBool("Jumping", true);
+
+                if(animController.GetBool("Jumping") == true && (Input.GetButtonDown(controlC.inputJump)))
+                {
+                   animController.SetTrigger("Jumpdouble");
+                   animController.SetBool("Jumping", false);
+                }
             }
             if (rb.velocity.y < -0.1f)
             {
@@ -129,9 +142,11 @@ public class Player : MonoBehaviour
             if (!can_jump && rb.velocity.y < -0.1f)
             {
                 animController.SetBool("Jumping", true);
+                jump = true;
             }
             if (rb.velocity.y > 0.1f)
             {
+                jump = false;
                 animController.SetBool("Jumping", false);
                 animController.SetBool("Fall", true);
 

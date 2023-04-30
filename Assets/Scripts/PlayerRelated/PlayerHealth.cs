@@ -84,18 +84,11 @@ public class PlayerHealth : MonoBehaviour
             TakeDamage(1);
 
         }
-        if (collision.gameObject.tag == "DriftZone")
-        {
-            Debug.Log("touché");
-            TakeDamage(3);
-
-        }
 
         if (Time.time > nextdamage)
         {
             if (collision.gameObject.tag == "DamageZone" && Life > -1)
             {
-                Debug.Log("o");
                 TakeDamage(1);
                 nextdamage = Time.time + cooldownTime;
                 //Debug.Log("touché");
@@ -116,6 +109,11 @@ public class PlayerHealth : MonoBehaviour
             TakeDamage(1);
         }
 
+        if (other.CompareTag("DriftZone"))
+        {
+            TakeDamage(4);
+
+        }
     }
 
 
@@ -151,7 +149,7 @@ public class PlayerHealth : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         animController.SetBool("isDead", true);
         
-        if (Input.GetButtonDown(controlC.inputJump))
+        if (Input.GetButtonDown(controlC.inputInteraction))
         {
 
             Respawn = true;
