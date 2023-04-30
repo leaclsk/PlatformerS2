@@ -126,7 +126,7 @@ public class Player : MonoBehaviour
 
                 if(animController.GetBool("Jumping") == true && (Input.GetButtonDown(controlC.inputJump)))
                 {
-                   animController.SetTrigger("Jumpdouble");
+                   animController.SetTrigger("JumpDouble");
                    animController.SetBool("Jumping", false);
                 }
             }
