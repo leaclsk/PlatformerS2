@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     //[SerializeField] bool is_jumping = false;
     [SerializeField] bool can_jump = false;
 
-    bool jump;
+//bool jump;
     bool doubleJump;
     #endregion
 
@@ -142,11 +142,16 @@ public class Player : MonoBehaviour
             if (!can_jump && rb.velocity.y < -0.1f)
             {
                 animController.SetBool("Jumping", true);
-                jump = true;
+                //jump = true;
+                if (animController.GetBool("Jumping") == true && (Input.GetButtonDown(controlC.inputJump)))
+                {
+                    animController.SetTrigger("JumpDouble");
+                    animController.SetBool("Jumping", false);
+                }
             }
             if (rb.velocity.y > 0.1f)
             {
-                jump = false;
+                //jump = false;
                 animController.SetBool("Jumping", false);
                 animController.SetBool("Fall", true);
 

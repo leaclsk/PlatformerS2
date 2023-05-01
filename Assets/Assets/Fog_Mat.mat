@@ -70,7 +70,7 @@ Material:
     - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.051584147, g: 0.6509434, b: 0.5668228, a: 1}
     - _Color_1: {r: 1, g: 1, b: 1, a: 1}
     - _Color_2: {r: 1, g: 1, b: 1, a: 0}
     - _Fog_Size: {r: 120.84, g: 120.84, b: 0, a: 0}

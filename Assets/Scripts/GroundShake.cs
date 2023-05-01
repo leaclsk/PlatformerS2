@@ -9,10 +9,7 @@ public class GroundShake : MonoBehaviour
     [SerializeField]float movement = 0.25f;
     [SerializeField] Player player;
 
-    private void Start()
-    {
-        
-    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
