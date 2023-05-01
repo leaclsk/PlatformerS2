@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GroundShake : MonoBehaviour
 {
+    //mouvement de plateforme quand le player saute dessus : rebondit légèrement.
     //bool activ = true;
     [SerializeField]float movement = 0.25f;
     [SerializeField] Player player;
@@ -24,6 +25,7 @@ public class GroundShake : MonoBehaviour
 
             }
         }
+        //modifier le mouvement en fonction du sens dans lequel le player saute sur la plateforme.
         if (player.rb.gravityScale < 0)
         {
             if (collision.gameObject.tag == "Player")

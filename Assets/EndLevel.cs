@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class EndLevel : MonoBehaviour
 {
+    // passer au niveau suivant + animationde transition entre niveaux.
+
     [SerializeField] Animator transition;
 
     public float transitionTime = 1f;

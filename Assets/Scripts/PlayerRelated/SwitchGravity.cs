@@ -25,10 +25,9 @@ public class SwitchGravity : MonoBehaviour
         controlC = GetComponent<ControllerCheck>();
     }
     
-    // Update is called once per frame
     void Update()
     {
-        // inverser la gravité avec cooldown.
+        // inverser la gravité (avec cooldown).
         if(Time.time > nextSwitch)
         {
             GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 255, 255);

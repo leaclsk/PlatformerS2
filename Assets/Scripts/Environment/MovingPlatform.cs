@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
+    // Plateforme qui bouge entre X points.
     [SerializeField] public float speed = 2;
     [SerializeField] public  int depart;
     [SerializeField] Transform[] points;
     int i;
-    [SerializeField] bool moving;
+    //Rend les plateformes + modulaires pour le LD
+    [SerializeField] bool moving; //choisir si elles bougent de base ou si elle bouge dès que le player saute dessus
+    [SerializeField] bool NotLeading; // Utilisé seulement pour qu'elle ne soit plus mouvante et utiliser seulement le parentage.
 
 
     void Start()
@@ -45,10 +48,13 @@ public class MovingPlatform : MonoBehaviour
     {
         collision.transform.SetParent(transform);
 
+        if(!NotLeading)
+        { 
         if(collision.gameObject.tag == "Player")
         {
             //Debug.Log(moving);
             moving = true;
+        }
         }
     }
     private void OnCollisionExit2D(Collision2D collision)

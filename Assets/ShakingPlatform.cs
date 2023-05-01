@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShakingPlatform : MonoBehaviour
 {
+    //mouvement de plateforme quand le player saute dessus : rebondit légèrement.
     Animator animator;
 
     private void OnCollisionEnter2D(Collision2D collision)
