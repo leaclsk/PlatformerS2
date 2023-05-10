@@ -30,6 +30,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] OrganicHealth organicHealth;
     ControllerCheck controlC;
 
+    [SerializeField] bool BlackHole = false;
+
 
 
 
@@ -73,7 +75,7 @@ public class PlayerHealth : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if (collision.gameObject.tag == "Sprikes")
+        if (collision.gameObject.tag == "Spikes")
         {
             TakeDamage(1);
         }
@@ -114,6 +116,17 @@ public class PlayerHealth : MonoBehaviour
             TakeDamage(4);
 
         }
+        if (other.CompareTag("BlackHole"))
+        {
+           
+            
+                BlackHole = true;
+                animController.SetBool("BlackH", true);
+                TakeDamage(1);
+                
+
+            
+        }
     }
 
 
@@ -147,7 +160,7 @@ public class PlayerHealth : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x * -25f, rb.velocity.y * 6f);  
         dead = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
-        animController.SetBool("isDead", true);
+        if(!BlackHole)animController.SetBool("isDead", true);
         
         if (Input.GetButtonDown(controlC.inputInteraction))
         {
@@ -166,6 +179,7 @@ public class PlayerHealth : MonoBehaviour
             Life = 1;
             //currentHealth = 100; On reset la vie
             animController.SetBool("isDead", false);
+            animController.SetBool("BlackH", false);
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             Respawn = false;
             dead = false;

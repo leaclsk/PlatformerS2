@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Sprikes
   - Star
   - GravityUp
   - GravityDown
@@ -15,6 +14,8 @@ TagManager:
   - Ground
   - Laser
   - DriftZone
+  - Spikes
+  - BlackHole
   layers:
   - Default
   - TransparentFX
