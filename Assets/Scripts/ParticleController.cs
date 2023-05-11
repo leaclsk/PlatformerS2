@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class ParticleController : MonoBehaviour
 {
-    [SerializeField] ParticleSystem movementParticle;
+    [SerializeField] ParticleSystem movementParticleLeft;
+    [SerializeField] ParticleSystem movementParticleRight;
     [SerializeField] ParticleSystem fallParticle;
+    [SerializeField] ParticleSystem frontfallParticle;
+    [SerializeField] ParticleSystem fallParticleLeft;
+    [SerializeField] ParticleSystem fallParticleright;
     [Range(0, 10f)]
     [SerializeField] int occurAfterVelocity;
 
@@ -18,20 +22,35 @@ public class ParticleController : MonoBehaviour
 
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask groundLayer;
+    
 
     //[SerializeField] float nextfallPS;
     //[SerializeField] float cooldownTime;
     bool activ;
 
+ 
     private void Update()
     {
         counter += Time.deltaTime;
 
         if(IsGrounded())
         {
+            if (activ && playerRb.velocity.x > 0)
+            {
+                fallParticleLeft.Play();
+                frontfallParticle.Play();
+                activ = !activ;
+
+            }
+            else if(activ && playerRb.velocity.x < 0)
+            {
+                fallParticleright.Play();
+                activ = !activ;
+            }
             if (activ)
             {
                 fallParticle.Play();
+                frontfallParticle.Play();
                 activ = !activ;
 
             }
@@ -40,7 +59,15 @@ public class ParticleController : MonoBehaviour
             {
                 if (counter > dustFormationPeriod)
                 {
-                    movementParticle.Play();
+                    if (playerRb.velocity.x > 0)
+                    {
+                        movementParticleLeft.Play();
+                    }
+                    if (playerRb.velocity.x < 0)
+                    {
+                        movementParticleRight.Play();
+                    }
+
                     counter = 0;
                 }
             }
