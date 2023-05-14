@@ -15,7 +15,7 @@ public class OpenChest : MonoBehaviour
     [SerializeField] int starAmount;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] int nombre;
-    ParticleSystem ps;
+    //ParticleSystem ps;
     //[SerializeField] Transform tr;
 
 
@@ -24,7 +24,7 @@ public class OpenChest : MonoBehaviour
     {
         
         //controllerCheck = GetComponent<ControllerCheck>();
-        ps = gameObject.GetComponent<ParticleSystem>();
+        //ps = gameObject.GetComponent<ParticleSystem>();
         //tr = gameObject.GetComponent<Transform>();
 
 
@@ -62,7 +62,7 @@ public class OpenChest : MonoBehaviour
         }
         isRange = false;
 
-        ps.Stop();
+        //ps.Stop();
        
 
         //starCoin.Loot();
