@@ -61,7 +61,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -171,9 +171,13 @@ MonoBehaviour:
   switchG: {fileID: 7454671113192660321}
   rb: {fileID: 1047317517295438271}
   moveSpeed_horizontal: 350
-  is_jumping: 0
-  can_jump: 0
   maxFallSpeed: -15
+  groundCheck: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  jumpingPower: 16
+  can_jump: 0
 --- !u!95 &1047317517295438267
 Animator:
   serializedVersion: 5
@@ -209,6 +213,9 @@ MonoBehaviour:
   inTheZone: 0
   gravitySwitch: 1
   SensGravity: 0
+  cooldownTime: 0
+  nextSwitch: 0
+  GravityCoolDown: {fileID: 0}
 --- !u!114 &5625627280620552869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,7 +234,10 @@ MonoBehaviour:
   dead: 0
   amount: 0
   Life: 0
+  cooldownTime: 0
+  nextdamage: 0
   organicHealth: {fileID: 5625627280620552843}
+  BlackHole: 0
 --- !u!114 &5625627280620552884
 MonoBehaviour:
   m_ObjectHideFlags: 0
