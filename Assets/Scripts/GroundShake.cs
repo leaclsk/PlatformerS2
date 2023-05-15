@@ -8,37 +8,28 @@ public class GroundShake : MonoBehaviour
     //bool activ = true;
     [SerializeField]float movement = 0.25f;
     [SerializeField] Player player;
+    Vector2 posPlatform;
 
-
+    private void Start()
+    {
+        player = GameObject.Find("Piup").GetComponent<Player>();
+        posPlatform = transform.position;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (player.rb.gravityScale > 0)
+        if(collision.gameObject.tag == "Player")
         {
-            if (collision.gameObject.tag == "Player")
-            {
-                collision.transform.SetParent(transform);
-                transform.Translate(0, -movement, 0);
+            collision.transform.SetParent(transform);
+            transform.Translate(0, -movement*(Mathf.Abs(player.rb.gravityScale)/ player.rb.gravityScale),0);
+        }
 
-            }
-        }
-        //modifier le mouvement en fonction du sens dans lequel le player saute sur la plateforme.
-        if (player.rb.gravityScale < 0)
-        {
-            if (collision.gameObject.tag == "Player")
-            {
-                collision.transform.SetParent(transform);
-                transform.Translate(0, movement, 0);
-                
-            }
-        }
 
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
         collision.transform.SetParent(null);
-        if (player.rb.gravityScale > 0)
-        { transform.Translate(0, movement, 0); }
-        else { transform.Translate(0, -movement, 0); }
+        transform.position = posPlatform;
+
     }
 }
