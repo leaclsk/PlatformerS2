@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6076658016930412266, guid: aa383ee3d33cb034aa51cc1cbfe11921, type: 3}
       propertyPath: m_TagString
-      value: Spikes
+      value: DamageZone
       objectReference: {fileID: 0}
     - target: {fileID: 7628033879140261458, guid: aa383ee3d33cb034aa51cc1cbfe11921, type: 3}
       propertyPath: m_Size.x

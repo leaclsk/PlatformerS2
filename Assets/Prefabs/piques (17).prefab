@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 3663011957279266314}
   m_Layer: 0
   m_Name: piques (17)
-  m_TagString: Spikes
+  m_TagString: DamageZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

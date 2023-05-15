@@ -6,8 +6,8 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    public SwitchGravity switchG;
-    public Rigidbody2D rb;
+    [HideInInspector] public SwitchGravity switchG;
+    [HideInInspector] public Rigidbody2D rb;
     SpriteRenderer sr;
     Animator animController;
     ControllerCheck controlC;
@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         animController = GetComponent<Animator>();
         controlC = GetComponent<ControllerCheck>(); 
+        switchG = GetComponent<SwitchGravity>();
            
         
     }

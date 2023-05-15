@@ -5,143 +5,105 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public SwitchGravity switchG;
+    #region Initialisation et hidden
+    SwitchGravity switchG;
+    OrganicHealth organicHealth;
+    ControllerCheck controlC;
 
-
-    //[SerializeField] Health healthBarRef;
     Rigidbody2D rb;
     Animator animController;
-
-    //private int maxHealth = 100;
-    //public int currentHealth = 0;
+    SpriteRenderer sr;
+  
     Vector2 ref_velocity = Vector2.zero;
-    public Vector3 PosRespawn = Vector3.zero;
-    public bool Respawn = false;
+    [HideInInspector] public Vector3 PosRespawn = Vector3.zero;
+    [HideInInspector] public bool Respawn = false;
+    [HideInInspector] public bool dead = false;
+    #endregion
 
-    public bool dead = false;
-
-
-    public float amount = 0;
+    [Header("Life And Damage")]
     public int Life = 0;
-
     [SerializeField] float cooldownTime;
-    [SerializeField] float nextdamage;
-
-    [SerializeField] OrganicHealth organicHealth;
-    ControllerCheck controlC;
+    [SerializeField] float timeInRed;
+    float nextdamage;
+    bool damaged;
+    float timer;
 
     [SerializeField] bool BlackHole = false;
 
 
-
-
-
-
-
-    // Start is called before the first frame update
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animController = GetComponent<Animator>();
-        //currentHealth = maxHealth;
-        //healthBar.SetMaxHealth(maxHealth);
-        //SetPosRespawn(PosRespawn);
+        organicHealth = GetComponent<OrganicHealth>();
+        sr = GetComponent<SpriteRenderer>();
         PosRespawn = this.transform.position;
         controlC = GetComponent<ControllerCheck>();
+        switchG = GetComponent<SwitchGravity>();
+        timer = timeInRed;
     }
 
     private void Update()
     {
-        // Debug.Log(starFollowing.starHealth);
-        if (Input.GetKeyDown(KeyCode.C))
+        #region timerInREd
+        if (timer > 0 && damaged)
         {
-            TakeDamage(1);
-
+            sr.color = new Color(1, 0.6f, 0.6f);
+            timer -= Time.deltaTime;
         }
-        /*if (currentHealth <= 0)
-       {
-            Death();
-        }*/
 
+        if (timer < 0) timer = 0;
+        if (timer == 0)
+        {
+            sr.color = Color.white;
+            damaged = false;
+            timer = timeInRed;
+        }
+        #endregion
 
         if (Life < 0)
         {
             Death();
         }
 
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if (collision.gameObject.tag == "Spikes")
-        {
-            TakeDamage(1);
-        }
-
-        if (collision.gameObject.tag == "Ennemi")
-        {
-            
-            TakeDamage(1);
-
-        }
-
         if (Time.time > nextdamage)
         {
+           
             if (collision.gameObject.tag == "DamageZone" && Life > -1)
             {
                 TakeDamage(1);
+                damaged = true;
                 nextdamage = Time.time + cooldownTime;
-                //Debug.Log("touché");
             }
         }
     }
-   
-    //private void OnCollisionStay2D(Collision2D collision)
-    //{
-        
-    //}
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
-        if (other.CompareTag("Laser"))
-        {
-            TakeDamage(1);
-        }
-
         if (other.CompareTag("DriftZone"))
         {
             TakeDamage(4);
-
         }
+
         if (other.CompareTag("BlackHole"))
         {
-           
-            
                 BlackHole = true;
                 animController.SetBool("BlackH", true);
                 TakeDamage(1);
-                
-
-            
         }
     }
 
-
-    public void Amount()
-    {
-        amount += 1;
-
-    }
-
-
+    #region VOID
     public void TakeDamage(int damage)
     {
        Life -= damage;
 
-        if(organicHealth.positionetoile[organicHealth.i] != null)
+        if (organicHealth.positionetoile[organicHealth.i] != null)
         {
             
             Destroy(organicHealth.positionetoile[organicHealth.i]);
@@ -152,7 +114,6 @@ public class PlayerHealth : MonoBehaviour
         //Destroy(organicHealth.positionetoile[organicHealth.i]);
         //organicHealth.positionetoile[organicHealth.i] = Destroy(gameObject);
         //organicHealth.i--;
-
     }
 
     public void Death()
@@ -183,13 +144,12 @@ public class PlayerHealth : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
             Respawn = false;
             dead = false;
-
         }
     }
     public void SetPosRespawn(Vector3 Position)
     {
         this.transform.position = PosRespawn;
     }
+    #endregion
 
-    
 }

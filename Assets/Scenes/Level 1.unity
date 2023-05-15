@@ -6207,6 +6207,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2591466118397578950, guid: 6190fa96cb75c3242aed2bfde473b420, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591466118397578950, guid: 6190fa96cb75c3242aed2bfde473b420, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591466118397578950, guid: 6190fa96cb75c3242aed2bfde473b420, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2591466118397578951, guid: 6190fa96cb75c3242aed2bfde473b420, type: 3}
       propertyPath: m_Name
       value: Piup
@@ -6233,6 +6245,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7164192621313557967, guid: 6190fa96cb75c3242aed2bfde473b420, type: 3}
       propertyPath: positionetoile.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7164192621313557985, guid: 6190fa96cb75c3242aed2bfde473b420, type: 3}
+      propertyPath: organicHealth
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7164192621313558000, guid: 6190fa96cb75c3242aed2bfde473b420, type: 3}
@@ -18893,6 +18909,10 @@ PrefabInstance:
     - target: {fileID: 117499096899443558, guid: 01df829ffafa7c1469c23061d46f3099, type: 3}
       propertyPath: m_Name
       value: SpikesIA
+      objectReference: {fileID: 0}
+    - target: {fileID: 117499096899443558, guid: 01df829ffafa7c1469c23061d46f3099, type: 3}
+      propertyPath: m_TagString
+      value: DamageZone
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01df829ffafa7c1469c23061d46f3099, type: 3}

@@ -240,6 +240,7 @@ MonoBehaviour:
   nextdamage: 0
   organicHealth: {fileID: 8208233421171336110}
   BlackHole: 0
+  timeInRed: 0.4
 --- !u!114 &8208233421171336081
 MonoBehaviour:
   m_ObjectHideFlags: 0
