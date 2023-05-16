@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7692142249260987491}
   - component: {fileID: 7692142249260987492}
   - component: {fileID: 7321880759978106676}
-  - component: {fileID: 3966022706739114724}
+  - component: {fileID: 894002810069421457}
   m_Layer: 0
   m_Name: CollectibleStar
   m_TagString: Star
@@ -112,23 +112,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5753846, y: 1.5753846}
   m_EdgeRadius: 0
---- !u!95 &3966022706739114724
-Animator:
-  serializedVersion: 5
+--- !u!114 &894002810069421457
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7692142249260987494}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6506331b0901b85458cf510abd57c5fb, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63aa580e86c74c34a8c720275203edb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5

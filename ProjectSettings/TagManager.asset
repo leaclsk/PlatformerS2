@@ -16,6 +16,7 @@ TagManager:
   - DriftZone
   - Spikes
   - BlackHole
+  - InvisibleZone
   layers:
   - Default
   - TransparentFX

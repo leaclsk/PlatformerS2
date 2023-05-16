@@ -13,8 +13,8 @@ public class CheckPoint : MonoBehaviour
 
     private void Start()
     {
-        ps = gameObject.GetComponent<ParticleSystem>();
-        ps.Pause();
+        //ps = gameObject.GetComponent<ParticleSystem>();
+        //ps.Pause();
         GetComponent<SpriteRenderer>().color = new Color32(80, 80, 80, 255);
     }
 
@@ -24,7 +24,7 @@ public class CheckPoint : MonoBehaviour
         {
             transform.Rotate(new Vector3(0, 0, 5) * Time.deltaTime*speed);
            
-            ps.Play();
+            //ps.Play();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
