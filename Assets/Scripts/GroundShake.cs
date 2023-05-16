@@ -8,12 +8,14 @@ public class GroundShake : MonoBehaviour
     //bool activ = true;
     [SerializeField]float movement = 0.25f;
     [SerializeField] Player player;
-    Vector2 posPlatform;
+    [SerializeField] Vector3 posPlatform;
 
     private void Start()
     {
+        posPlatform = this.transform.position;
         player = GameObject.Find("Piup").GetComponent<Player>();
-        posPlatform = transform.position;
+        
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

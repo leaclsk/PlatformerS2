@@ -1438,6 +1438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!114 &62312259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4401,6 +4402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!1 &185745815
 GameObject:
   m_ObjectHideFlags: 0
@@ -5274,6 +5276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &253750681
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6007,6 +6010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &276276035
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7787,6 +7791,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &372888115
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9655,6 +9660,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &454822243
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12306,6 +12312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &582656597
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12733,6 +12740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &594552991
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14562,6 +14570,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &681774854
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14688,6 +14697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &681925449
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15042,6 +15052,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &702952561
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16010,6 +16021,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &758848729
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25082,11 +25094,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2591466118397578949, guid: 6190fa96cb75c3242aed2bfde473b420, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.3
+      value: 95.46
       objectReference: {fileID: 0}
     - target: {fileID: 2591466118397578949, guid: 6190fa96cb75c3242aed2bfde473b420, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.4
+      value: 28.59
       objectReference: {fileID: 0}
     - target: {fileID: 2591466118397578949, guid: 6190fa96cb75c3242aed2bfde473b420, type: 3}
       propertyPath: m_LocalPosition.z
@@ -25810,6 +25822,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!4 &967702844 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7692142249260987491, guid: 91d15cc23b54e7b4996933eddc798480, type: 3}
@@ -25914,11 +25927,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 850933078067672412, guid: 0d1e00e65445af44fb10eb47c01b8da9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29.28516
+      value: 97.549286
       objectReference: {fileID: 0}
     - target: {fileID: 850933078067672412, guid: 0d1e00e65445af44fb10eb47c01b8da9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.88027
+      value: 28.785799
       objectReference: {fileID: 0}
     - target: {fileID: 850933078067672412, guid: 0d1e00e65445af44fb10eb47c01b8da9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -25987,6 +26000,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &976867537
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26623,6 +26637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &988998772
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28377,6 +28392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &1091958168
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -30777,6 +30793,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &1172400077
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -31884,6 +31901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &1214507463
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32375,6 +32393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &1247851689
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -33315,6 +33334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &1295585323
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -35994,6 +36014,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &1436959060
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -37165,11 +37186,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6782323494970678716, guid: 3120c570f2c30824383caa8724b50cbd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.388533
+      value: 97.549286
       objectReference: {fileID: 0}
     - target: {fileID: 6782323494970678716, guid: 3120c570f2c30824383caa8724b50cbd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.595799
+      value: 28.785799
       objectReference: {fileID: 0}
     - target: {fileID: 6782323494970678716, guid: 3120c570f2c30824383caa8724b50cbd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -37410,6 +37431,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &1492267373
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -38600,6 +38622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &1572356020
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -38980,6 +39003,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &1578122494
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -39311,6 +39335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &1603287433
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41486,6 +41511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &1714728617
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -42589,6 +42615,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 0.25
   player: {fileID: 1219398176}
+  posPlatform: {x: 0, y: 0, z: 0}
 --- !u!61 &1754209008
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -43141,7 +43168,6 @@ GameObject:
   - component: {fileID: 1795079311}
   - component: {fileID: 1795079310}
   - component: {fileID: 1795079309}
-  - component: {fileID: 1795079308}
   - component: {fileID: 1795079307}
   m_Layer: 3
   m_Name: platformes
@@ -43169,20 +43195,6 @@ MonoBehaviour:
   - {fileID: 218719011}
   moving: 0
   NotLeading: 0
---- !u!114 &1795079308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1795079306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 379906568f6265648a22f58d31fc7a14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movement: 0.25
-  player: {fileID: 1219398176}
 --- !u!61 &1795079309
 BoxCollider2D:
   m_ObjectHideFlags: 0
