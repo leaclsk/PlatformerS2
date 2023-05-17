@@ -31,6 +31,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] bool BlackHole = false;
 
 
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -73,22 +75,27 @@ public class PlayerHealth : MonoBehaviour
 
         if (Time.time > nextdamage)
         {
-           
+
             if (collision.gameObject.tag == "DamageZone" && Life > -1)
             {
                 TakeDamage(1);
                 damaged = true;
                 nextdamage = Time.time + cooldownTime;
             }
+            if (collision.gameObject.tag == "DriftZone")
+            {
+                TakeDamage(4);
+                
+            }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("DriftZone"))
-        {
-            TakeDamage(4);
-        }
+        //if (other.CompareTag("DriftZone"))
+        //{
+        //    TakeDamage(4);
+        //}
 
         if (other.CompareTag("BlackHole"))
         {

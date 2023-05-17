@@ -14,12 +14,18 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] bool NotLeading; // Utilisé seulement pour qu'elle ne soit plus mouvante et utiliser seulement le parentage.
 
     [SerializeField] bool isPiston; //rajoute les particles si il s'agit de l'ennemi piston.
+    [SerializeField] ParticleSystem psFront;
+    [SerializeField] ParticleSystem psBack;
+    Rigidbody2D rb;
 
-    [SerializeField] ParticleSystem ps;
+    PlayerHealth health;
+    ControllerCheck controlc;
 
     void Start()
     {
-
+        rb = GetComponent<Rigidbody2D>();
+        health = GameObject.Find("Piup").GetComponent<PlayerHealth>();
+        controlc = GameObject.Find("Piup").GetComponent<ControllerCheck>();
         if (moving)
         {
             transform.position = points[depart].position;
@@ -30,6 +36,14 @@ public class MovingPlatform : MonoBehaviour
 
     void Update()
     {
+        if (health.Life < 0)
+        {
+            moving = false;
+            if(Input.GetButtonDown(controlc.inputInteraction))
+            transform.position = points[depart].position;
+        }
+
+
         if (moving)
         {
 
@@ -37,23 +51,28 @@ public class MovingPlatform : MonoBehaviour
             {
                 i++;
 
+                if (isPiston)
+                {
+                    psFront.Play();
+                    psBack.Play();
+                }
+
                 if ( i == points.Length)
                 {
                     i = 0;
+                    if (isPiston)
+                    {
+                        psFront.Stop();
+                        psBack.Stop();
+                    }
+
                 }
             }
 
-        transform.position = Vector2.MoveTowards(transform.position, points[i].position, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, points[i].position, speed * Time.deltaTime);
+
         }
 
-        if (isPiston)
-        {  
-            if (moving)
-            {
-                ps.Play();
-
-            }
-        }
 
 
     }

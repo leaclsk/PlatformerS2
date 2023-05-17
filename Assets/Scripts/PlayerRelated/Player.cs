@@ -158,9 +158,20 @@ public class Player : MonoBehaviour
 
             }
         }
-        #endregion
+        
 
     }
+
+     private void OnCollisionEnter2D(Collision2D collision)
+     {
+        if(collision.gameObject.layer == 3)
+        {
+            animController.SetBool("Fall", false);
+            animController.SetBool("Jumping", false);
+        }
+     }
+    #endregion
+
     void FixedUpdate()
     {
         #region OLD JUMP
@@ -223,6 +234,7 @@ public class Player : MonoBehaviour
     private bool IsGrounded()// vérifie si le player est au sol
     {
         animController.SetBool("Fall", false);
+        animController.SetBool("Jumping", false);
         return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
     }
 

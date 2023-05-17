@@ -34244,6 +34244,14 @@ PrefabInstance:
       propertyPath: GravityCoolDown
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8208233421171336064, guid: 7b83d4cfbc169ed48a88ac42d2b24dc6, type: 3}
+      propertyPath: nombre
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8208233421171336064, guid: 7b83d4cfbc169ed48a88ac42d2b24dc6, type: 3}
+      propertyPath: rbStars
+      value: 
+      objectReference: {fileID: -5552201586096691512, guid: 5a51aad941bde3943a9f6f7222ed658e, type: 3}
     - target: {fileID: 8208233421171336081, guid: 7b83d4cfbc169ed48a88ac42d2b24dc6, type: 3}
       propertyPath: starsText
       value: 
