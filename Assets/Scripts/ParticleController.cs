@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ParticleController : MonoBehaviour
 {
+    [SerializeField] ParticleSystem starFX;
     [SerializeField] ParticleSystem movementParticleLeft;
     [SerializeField] ParticleSystem movementParticleRight;
     [SerializeField] ParticleSystem fallParticle;
@@ -28,7 +29,11 @@ public class ParticleController : MonoBehaviour
     //[SerializeField] float cooldownTime;
     bool activ;
 
- 
+    private void Start()
+    {
+        
+    }
+
     private void Update()
     {
         counter += Time.deltaTime;
@@ -79,15 +84,19 @@ public class ParticleController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+         
+            if (collision.CompareTag("Star"))
+            {
+                starFX.Play();
+            }
+     
+    }
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
     }
-
-
-
-
-
 
 
 }
