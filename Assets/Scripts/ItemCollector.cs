@@ -22,7 +22,7 @@ public class ItemCollector : MonoBehaviour
       
             if (collision.gameObject.CompareTag("Star"))
             { 
-                Destroy(collision.gameObject);
+                //Destroy(collision.gameObject);
                 Stars++;
                 starsText.text = Stars + "";
                 //collision.gameObject.GetComponent<B>().enabled = false;
