@@ -15,7 +15,7 @@ public class CheckPoint : MonoBehaviour
     {
         //ps = gameObject.GetComponent<ParticleSystem>();
         //ps.Pause();
-        GetComponent<SpriteRenderer>().color = new Color32(80, 80, 80, 255);
+        //GetComponent<SpriteRenderer>().color = new Color32(80, 80, 80, 255);
     }
 
     private void Update()
@@ -33,9 +33,8 @@ public class CheckPoint : MonoBehaviour
         {
             //Debug.Log(heal.PosRespawn);
             heal.PosRespawn = gameObject.transform.position;
-            GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+            //GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
             rotation = true;
-            
 
         }
     

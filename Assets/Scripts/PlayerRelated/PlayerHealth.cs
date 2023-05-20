@@ -103,7 +103,10 @@ public class PlayerHealth : MonoBehaviour
                 animController.SetBool("BlackH", true);
                 TakeDamage(1);
         }
-    }
+       
+
+        }
+
 
     #region VOID
     public void TakeDamage(int damage)
@@ -130,7 +133,7 @@ public class PlayerHealth : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         if(!BlackHole)animController.SetBool("isDead", true);
         
-        if (Input.GetButtonDown(controlC.inputInteraction))
+        if (Input.GetButtonDown(controlC.inputJump))
         {
 
             Respawn = true;
@@ -154,7 +157,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
     public void SetPosRespawn(Vector3 Position)
-    {
+    {      
         this.transform.position = PosRespawn;
     }
     #endregion

@@ -14,7 +14,7 @@ public class SwitchGravity : MonoBehaviour
     [SerializeField] public float SensGravity;
     [SerializeField] float cooldownTime;
     [SerializeField] float nextSwitch;
-    [SerializeField] private Image GravityCoolDown;
+    //[SerializeField] private Image GravityCoolDown;
     ControllerCheck controlC;
 
 
@@ -30,7 +30,7 @@ public class SwitchGravity : MonoBehaviour
         // inverser la gravité (avec cooldown).
         if(Time.time > nextSwitch)
         {
-            GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            //GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
 
             if (Input.GetButtonDown(controlC.inputSwitch) && gravitySwitch)
             {
@@ -39,7 +39,7 @@ public class SwitchGravity : MonoBehaviour
                  Rotation();
                  Flip();
 
-                 GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 225, 25);
+                 //GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 225, 25);
 
                  nextSwitch = Time.time + cooldownTime;
             }
@@ -51,7 +51,7 @@ public class SwitchGravity : MonoBehaviour
         else if(inTheZone) gravitySwitch = false;
 
         //cooldown UI grise 
-        if(!gravitySwitch) GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 225, 25);
+        //if(!gravitySwitch) GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 225, 25);
         
     }
 

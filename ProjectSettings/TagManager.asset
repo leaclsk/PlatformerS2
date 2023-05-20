@@ -17,6 +17,7 @@ TagManager:
   - Spikes
   - BlackHole
   - InvisibleZone
+  - TutoRes
   layers:
   - Default
   - TransparentFX
