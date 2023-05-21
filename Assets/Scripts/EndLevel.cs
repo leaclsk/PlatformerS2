@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class EndLevel : MonoBehaviour
 {
-    // passer au niveau suivant + animationde transition entre niveaux.
+    // passer au niveau suivant + animation de transition entre niveaux.
 
     [SerializeField] Animator transition;
 
@@ -21,7 +21,7 @@ public class EndLevel : MonoBehaviour
 
         }
     }
-    IEnumerator LoadLevel(int levelIndex)
+    public IEnumerator LoadLevel(int levelIndex)
     {
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
