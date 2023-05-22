@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7780547103792926615}
   - component: {fileID: 8850437188607964016}
   - component: {fileID: 6212214526318109509}
+  - component: {fileID: 6457618621866932550}
+  - component: {fileID: 785111560799589910}
   m_Layer: 0
   m_Name: lianes
   m_TagString: Untagged
@@ -105,3 +107,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!70 &6457618621866932550
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7351978531882949402}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.22, y: 2.02}
+  m_Size: {x: 6.92, y: 6.09}
+  m_Direction: 0
+--- !u!114 &785111560799589910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7351978531882949402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 417f0cc3dea62b74885b24128ee1601e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
