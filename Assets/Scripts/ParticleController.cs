@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ParticleController : MonoBehaviour
 {
-    [SerializeField] ParticleSystem starFX;
+    [SerializeField] ParticleSystem FallPositiv;
     [SerializeField] ParticleSystem movementParticleLeft;
     [SerializeField] ParticleSystem movementParticleRight;
     [SerializeField] ParticleSystem fallParticle;
@@ -18,6 +18,7 @@ public class ParticleController : MonoBehaviour
     [SerializeField] float dustFormationPeriod;
 
     [SerializeField] Rigidbody2D playerRb;
+    [SerializeField] ControllerCheck controlC;
 
     float counter;
 
@@ -38,8 +39,19 @@ public class ParticleController : MonoBehaviour
     {
         counter += Time.deltaTime;
 
-        if(IsGrounded())
+        if(playerRb.velocity.y > 0 && playerRb.gravityScale > 0 && Input.GetButtonUp(controlC.inputSwitch))
         {
+            FallPositiv.Play();
+        }
+        if (playerRb.velocity.y < 0 && playerRb.gravityScale < 0 && Input.GetButtonUp(controlC.inputSwitch))
+        {
+            FallPositiv.Stop();
+        }
+
+        if (IsGrounded())
+        {
+            FallPositiv.Stop();
+
             if (activ && playerRb.velocity.x > 0)
             {
                 fallParticleLeft.Play();
@@ -84,15 +96,7 @@ public class ParticleController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-         
-            if (collision.CompareTag("Star"))
-            {
-                starFX.Play();
-            }
-     
-    }
+  
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);

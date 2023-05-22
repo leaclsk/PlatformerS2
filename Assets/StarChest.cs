@@ -6,19 +6,19 @@ public class StarChest : MonoBehaviour
 {
     [SerializeField] BoxCollider2D box;
     [SerializeField] CircleCollider2D trigger;
-    Rigidbody2D rb;
+    [SerializeField] Rigidbody2D rb;
     [SerializeField] float timer = 0.3f;
     bool canCount;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        canCount = true;
+        //rb = GetComponent<Rigidbody2D>();
+        //canCount = true;
     }
 
     void Update()
     {
-        if (canCount && timer > 0)
+        if (timer > 0)
         {
             timer -= Time.deltaTime;
 

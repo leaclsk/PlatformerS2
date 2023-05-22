@@ -17,7 +17,8 @@ public class ListCinematique : MonoBehaviour
     [SerializeField] VideoPlayer video4;
     [SerializeField] VideoPlayer video5;
     [SerializeField] VideoPlayer video6;
-    [SerializeField] VideoPlayer video7Vide;
+    [SerializeField] VideoPlayer video7;
+    [SerializeField] VideoPlayer videoVide;
 
     [SerializeField] int ajout = 0;
     void Start()
@@ -28,7 +29,8 @@ public class ListCinematique : MonoBehaviour
         sceneVideo.Add(video4);
         sceneVideo.Add(video5);
         sceneVideo.Add(video6);
-        sceneVideo.Add(video7Vide);
+        sceneVideo.Add(video7);
+        sceneVideo.Add(videoVide);
         video = sceneVideo[0];
         PlayVideo();
     }
@@ -44,7 +46,7 @@ public class ListCinematique : MonoBehaviour
             PlayVideo();
             
 
-            if (ajout == 7)
+            if (ajout == 8)
             {
                 
                 endLevel.StartCoroutine(endLevel.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));

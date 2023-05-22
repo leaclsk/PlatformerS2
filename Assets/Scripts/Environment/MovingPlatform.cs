@@ -36,7 +36,7 @@ public class MovingPlatform : MonoBehaviour
 
     void Update()
     {
-        if (health.Life < 0)
+        if (health.Life < 0 && !isPiston)
         {
             moving = false;
             if(Input.GetButtonDown(controlc.inputInteraction))

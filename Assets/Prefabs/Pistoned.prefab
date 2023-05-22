@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 2119153699782367254}
   - component: {fileID: 5890075303485337478}
   - component: {fileID: 2554593097582896192}
+  - component: {fileID: 3351673070364186340}
   m_Layer: 0
   m_Name: piston
-  m_TagString: Untagged
+  m_TagString: DamageZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,6 +130,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!70 &3351673070364186340
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348845898035816949}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.07185968, y: -3.1853533}
+  m_Size: {x: 4.0503845, y: 14.109326}
+  m_Direction: 0
 --- !u!1 &3005464917603908425
 GameObject:
   m_ObjectHideFlags: 0

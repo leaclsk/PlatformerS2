@@ -81,6 +81,7 @@ public class Player : MonoBehaviour
         {
             if (Input.GetButtonDown(controlC.inputJump))
             {
+                animController.SetBool("Jumping", true);
                 if (coyoteTimeCounter > 0f || doubleJump)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
@@ -99,6 +100,7 @@ public class Player : MonoBehaviour
         {
             if (Input.GetButtonDown(controlC.inputJump))
             {
+                animController.SetBool("Jumping", true);
                 if (coyoteTimeCounter > 0f || doubleJump)                  
                 {
    
@@ -108,8 +110,7 @@ public class Player : MonoBehaviour
                 }
             }
             if (Input.GetButtonUp(controlC.inputJump) && rb.velocity.y < 0f)
-            {
-               
+            {  
                 rb.velocity = new Vector2(rb.velocity.x, -rb.velocity.y * 0.5f);
                 coyoteTimeCounter = 0f;
             }
@@ -162,6 +163,7 @@ public class Player : MonoBehaviour
 
     }
 
+    //Correction animation lorsque piup touche le layer Ground.
      private void OnCollisionEnter2D(Collision2D collision)
      {
         if(collision.gameObject.layer == 3)
@@ -235,6 +237,7 @@ public class Player : MonoBehaviour
     {
         animController.SetBool("Fall", false);
         animController.SetBool("Jumping", false);
+        //if(rb.velocity.x == 0) animController.SetTrigger("GroundTouch");
         return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
     }
 

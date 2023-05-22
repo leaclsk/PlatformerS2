@@ -28,12 +28,6 @@ public class ItemCollector : MonoBehaviour
                 //collision.gameObject.GetComponent<B>().enabled = false;
             }
 
-        if (collision.gameObject.CompareTag("ButtonChangeZone"))
-        {
-            Destroy(collision.gameObject);
-            changeZone.change = false;
-            
-        }
         
 
     }

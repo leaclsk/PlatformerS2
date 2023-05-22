@@ -7,6 +7,7 @@ public class CollectedStars : MonoBehaviour
     SpriteRenderer sr;
     ParticleSystem ps;
     bool collected;
+    [SerializeField] GameObject trigger;
     [SerializeField] bool followingStars;
     void Start()
     {
@@ -22,11 +23,12 @@ public class CollectedStars : MonoBehaviour
         }
     }
 
-    IEnumerator Collected()
+    public IEnumerator Collected()
     {
-        if (!followingStars) sr.enabled = false;
+        if (!followingStars) Destroy(trigger);
+            if (!followingStars) sr.enabled = false;
         ps.Play();
-        yield return new WaitForSeconds(0.62f);
+        yield return new WaitForSeconds(0.60f);
         if(!followingStars) Destroy(this);
 
     }
