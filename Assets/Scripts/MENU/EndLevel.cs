@@ -9,9 +9,10 @@ public class EndLevel : MonoBehaviour
     // passer au niveau suivant + animation de transition entre niveaux.
 
     [SerializeField] Animator transition;
-
+    
     public float transitionTime = 1f;
 
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
