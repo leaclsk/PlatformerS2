@@ -17,14 +17,14 @@ public class EnemyAI : MonoBehaviour
 
     Seeker seeker;
     Rigidbody2D rb;
-    [SerializeField] EnemyGFX enemyGFX;
+    [SerializeField] Transform enemyGFX;
 
     void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
 
-        InvokeRepeating("UpdatePath", 0f, 5f);
+        InvokeRepeating("UpdatePath", 0f, 1f);
         
     }
 

@@ -12,6 +12,10 @@ public class SwitchCamera : MonoBehaviour
     [SerializeField] bool Cam5;
     [SerializeField] bool Cam6;
     [SerializeField] bool CamBoss1;
+    [SerializeField] bool Cam8;
+    [SerializeField] bool Cam9;
+    [SerializeField] bool fangenMoment;
+    [SerializeField] Animator animatorFangen;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -64,16 +68,42 @@ public class SwitchCamera : MonoBehaviour
                 animator.SetBool("CamBoss1", true);
             }
         }
+        if (Cam8)
+        {
+            if (collision.CompareTag("Player"))
+            {
+                animator.SetBool("Cam8", true);
+            }
+        }
+        if (Cam9)
+        {
+            if (collision.CompareTag("Player"))
+            {
+                animator.SetBool("Cam9", true);
+            }
+        }
+
+        if(fangenMoment)
+        {
+            animatorFangen = GameObject.Find("CM vcam Boss 1").GetComponent<Animator>();
+            animatorFangen.SetBool("CamFangen", true);
+        }
 
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (CamTuto) animator.SetBool("CamTuto", false);
-        if (Cam2) animator.SetBool("Camera2", false);
-        if (Cam3) animator.SetBool("Camera3", false);
-        if (Cam4) animator.SetBool("Camera4", false);
-        if (Cam5) animator.SetBool("Camera5", false);
-        if (Cam6) animator.SetBool("Camera6", false);
-        if (CamBoss1) animator.SetBool("CamBoss1", false);
+        if(collision.CompareTag("Player"))
+        {
+            if (CamTuto) animator.SetBool("CamTuto", false);
+            if (Cam2) animator.SetBool("Camera2", false);
+            if (Cam3) animator.SetBool("Camera3", false);
+            if (Cam4) animator.SetBool("Camera4", false);
+            if (Cam5) animator.SetBool("Camera5", false);
+            if (Cam6) animator.SetBool("Camera6", false);
+            if (CamBoss1) animator.SetBool("CamBoss1", false);
+            if (Cam8) animator.SetBool("Cam8", false);
+            if (Cam9) animator.SetBool("Cam9", false);
+        }
+        
     }
 }
