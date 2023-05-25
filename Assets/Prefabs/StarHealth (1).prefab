@@ -4892,6 +4892,7 @@ GameObject:
   - component: {fileID: 6507414610513310595}
   - component: {fileID: 6507414610513310592}
   - component: {fileID: 6935932131972321130}
+  - component: {fileID: 7646320590170810328}
   m_Layer: 0
   m_Name: StarHealth (1)
   m_TagString: FollowingStar
@@ -5015,4 +5016,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1687450c8855f247983f781e1725ab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trigger: {fileID: 0}
   followingStars: 1
+--- !u!114 &7646320590170810328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6507414610513310598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63aa580e86c74c34a8c720275203edb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 7

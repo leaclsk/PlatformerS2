@@ -15,7 +15,23 @@ public class SwitchCamera : MonoBehaviour
     [SerializeField] bool Cam8;
     [SerializeField] bool Cam9;
     [SerializeField] bool fangenMoment;
+
     [SerializeField] Animator animatorFangen;
+    [SerializeField] PlayerHealth playerhealth;
+
+    private void Start()
+    {
+        playerhealth = GameObject.Find("Piup").GetComponent<PlayerHealth>();
+    }
+    private void Update()
+    {
+        if (playerhealth.dead == true && fangenMoment)
+        {
+       
+                animatorFangen.SetBool("CamFangen", false);
+
+        } 
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

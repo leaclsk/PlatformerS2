@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static System.TimeZoneInfo;
+using UnityEngine.Video;
 
 public class MainMenu : MonoBehaviour
 {
+    #region TRANSITIONS FIN MENU (FADE OUT)
     [SerializeField] Animator transition;
     Animator animatorMenu;
     [SerializeField] Animator logoAnimation;
@@ -20,12 +22,37 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Animator quitButton;
     [SerializeField] Animator OpenCinematic;
     [SerializeField] ParticleSystem ps;
+
+    
+    public float FintransitionTime = 10f;
+
+    #endregion
+
+    #region CINEMATIQUES
+    [SerializeField] ControllerCheck controlC;
+    public List<VideoPlayer> sceneVideo = new List<VideoPlayer>();
+    [SerializeField] int ajout = 0;
+    [SerializeField] VideoPlayer video;
+    [SerializeField] VideoPlayer video1;
+    [SerializeField] VideoPlayer video2;
+    [SerializeField] VideoPlayer video3;
+    [SerializeField] VideoPlayer video4;
+    [SerializeField] VideoPlayer video5;
+    [SerializeField] VideoPlayer video6;
+    [SerializeField] VideoPlayer video7;
+    [SerializeField] VideoPlayer videoVide;
+    bool isMenuDone;
+    #endregion
+
+    [SerializeField] EndLevel endLevel;
+    
     public float transitionTime = 1.30f;
 
     private void Start()
     {
+
+        #region GETCOMPONENT ELEMENTS MENU
         ps = GameObject.Find("ParticlesSys").GetComponent<ParticleSystem>();
-        
 
         FondlogoAnimation = GameObject.Find("FondLogo").GetComponent<Animator>();
    
@@ -44,27 +71,40 @@ public class MainMenu : MonoBehaviour
         quitButton = GameObject.Find("Quit").GetComponent<Animator>();
 
         OpenCinematic = GameObject.Find("OpenCinematic").GetComponent<Animator>();
+        #endregion
+
+        #region LIST VIDEOS CINEMATIQUE
+        sceneVideo.Add(video1);
+        sceneVideo.Add(video2);
+        sceneVideo.Add(video3);
+        sceneVideo.Add(video4);
+        sceneVideo.Add(video5);
+        sceneVideo.Add(video6);
+        sceneVideo.Add(video7);
+        sceneVideo.Add(videoVide);
+        video = sceneVideo[0];
+#endregion
 
 
+    }
+    private void Update()
+    {
+        if (Input.GetButtonDown(controlC.inputJump) && isMenuDone)
+        {
+            video = sceneVideo[+ajout];
+            PlayVideo();
 
+            if (ajout == 7)
+            {
+                endLevel.StartCoroutine(endLevel.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+            }
+        }
     }
     public void PlayCinematic()
-    {
-        ps.Stop();
-        Planete1.SetBool("FinMenu", true);
-        OpenCinematic.SetBool("FinMenu", true);
-        FondlogoAnimation.SetBool("FondMenu", true);
-        logoAnimation.SetBool("FinMenu", true);
-        Planete1.SetBool("FinMenu", true);
-        Planete2.SetBool("FinMenu", true);
-        Planete3.SetBool("FinMenu", true);
-        PiupMaisonLight.SetBool("FinMenu", true);
-        
-        playBoutton.SetBool("FinMenu", true);
-        optionButton.SetBool("FinMenu", true);
-        quitButton.SetBool("FinMenu", true);
-        OpenCinematic.SetBool("FinMenu", true);
+    {  
+        StartCoroutine("FinMenu");
     }
+
     public void PlayGame()
     {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
@@ -74,6 +114,33 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
 
     }
+   
+
+    IEnumerator FinMenu()
+    {
+        #region ANIM FADE OUT MENU
+        ps.Stop();
+        Planete1.SetBool("FinMenu", true);
+        OpenCinematic.SetBool("FinMenu", true);
+        FondlogoAnimation.SetBool("FondMenu", true);
+        logoAnimation.SetBool("FinMenu", true);
+        Planete1.SetBool("FinMenu", true);
+        Planete2.SetBool("FinMenu", true);
+        Planete3.SetBool("FinMenu", true);
+        PiupMaisonLight.SetBool("FinMenu", true);
+        playBoutton.SetBool("FinMenu", true);
+        optionButton.SetBool("FinMenu", true);
+        quitButton.SetBool("FinMenu", true);
+        OpenCinematic.SetBool("FinMenu", true);
+        #endregion
+
+        yield return new WaitForSeconds(3f); // attends la fin du fadeout
+        PlayVideo(); 
+        isMenuDone = true; //lancer les autres cinematiques
+
+        //yield return new WaitForSeconds(transitionTime);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
     IEnumerator LoadLevel(int levelIndex)
     {
         //transition.SetTrigger("Start");
@@ -81,5 +148,10 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         //transition.SetBool("Start", false);
 
+    }
+    void PlayVideo()
+    {
+        video.Play();
+        ajout++;
     }
 }
