@@ -9,18 +9,61 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Animator transition;
     Animator animatorMenu;
     [SerializeField] Animator logoAnimation;
+    //[SerializeField] Animator FondlogoAnimation;
+    [SerializeField] Animator FondlogoAnimation;
+    [SerializeField] Animator Planete1;
+    [SerializeField] Animator Planete2;
+    [SerializeField] Animator Planete3;
+    [SerializeField] Animator PiupMaisonLight;
+    [SerializeField] Animator playBoutton;
+    [SerializeField] Animator optionButton;
+    [SerializeField] Animator quitButton;
+    [SerializeField] Animator OpenCinematic;
+    [SerializeField] ParticleSystem ps;
     public float transitionTime = 1.30f;
 
     private void Start()
     {
-        logoAnimation = GetComponent<Animator>();
-        animatorMenu = GetComponent<Animator>();
-        //MainMenu = GameObject.Find("Piup").GetComponent<Player>();
+        ps = GameObject.Find("ParticlesSys").GetComponent<ParticleSystem>();
+        
+
+        FondlogoAnimation = GameObject.Find("FondLogo").GetComponent<Animator>();
+   
+        Planete1 = GameObject.Find("Planete1").GetComponent<Animator>();
+       
+        Planete2 = GameObject.Find("Planete2").GetComponent<Animator>();
+    
+        Planete3 = GameObject.Find("Planete3").GetComponent<Animator>();
+
+        PiupMaisonLight = GameObject.Find("PlanetePiupLum").GetComponent<Animator>();
+
+        logoAnimation = GameObject.Find("LogoAnimation").GetComponent<Animator>();
+
+        playBoutton = GameObject.Find("Play").GetComponent<Animator>();
+        optionButton = GameObject.Find("Option").GetComponent<Animator>();
+        quitButton = GameObject.Find("Quit").GetComponent<Animator>();
+
+        OpenCinematic = GameObject.Find("OpenCinematic").GetComponent<Animator>();
+
+
+
     }
     public void PlayCinematic()
     {
+        ps.Stop();
+        Planete1.SetBool("FinMenu", true);
+        OpenCinematic.SetBool("FinMenu", true);
+        FondlogoAnimation.SetBool("FondMenu", true);
         logoAnimation.SetBool("FinMenu", true);
-        animatorMenu.SetBool("FinMenu", true);
+        Planete1.SetBool("FinMenu", true);
+        Planete2.SetBool("FinMenu", true);
+        Planete3.SetBool("FinMenu", true);
+        PiupMaisonLight.SetBool("FinMenu", true);
+        
+        playBoutton.SetBool("FinMenu", true);
+        optionButton.SetBool("FinMenu", true);
+        quitButton.SetBool("FinMenu", true);
+        OpenCinematic.SetBool("FinMenu", true);
     }
     public void PlayGame()
     {

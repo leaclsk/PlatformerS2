@@ -1283,6 +1283,11 @@ MonoBehaviour:
   Cam4: 1
   Cam5: 0
   Cam6: 0
+  CamBoss1: 0
+  Cam8: 0
+  Cam9: 0
+  fangenMoment: 0
+  animatorFangen: {fileID: 0}
 --- !u!61 &38115467
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -40765,6 +40770,11 @@ MonoBehaviour:
   Cam4: 0
   Cam5: 0
   Cam6: 0
+  CamBoss1: 0
+  Cam8: 0
+  Cam9: 0
+  fangenMoment: 0
+  animatorFangen: {fileID: 0}
 --- !u!61 &1543476362
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -49189,6 +49199,11 @@ MonoBehaviour:
   Cam4: 0
   Cam5: 0
   Cam6: 0
+  CamBoss1: 0
+  Cam8: 0
+  Cam9: 0
+  fangenMoment: 0
+  animatorFangen: {fileID: 0}
 --- !u!61 &1968045416
 BoxCollider2D:
   m_ObjectHideFlags: 0

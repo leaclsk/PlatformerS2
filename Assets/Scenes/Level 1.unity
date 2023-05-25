@@ -7348,6 +7348,10 @@ MonoBehaviour:
   Cam5: 0
   Cam6: 1
   CamBoss1: 0
+  Cam8: 0
+  Cam9: 0
+  fangenMoment: 0
+  animatorFangen: {fileID: 0}
 --- !u!61 &223682399
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -42539,7 +42543,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1777042538}
-  m_RootOrder: 133
+  m_RootOrder: 127
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1258305732
 PrefabInstance:
@@ -42856,6 +42860,10 @@ MonoBehaviour:
   Cam5: 1
   Cam6: 0
   CamBoss1: 0
+  Cam8: 0
+  Cam9: 0
+  fangenMoment: 0
+  animatorFangen: {fileID: 0}
 --- !u!1 &1265528623
 GameObject:
   m_ObjectHideFlags: 0
@@ -57961,7 +57969,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1777042538}
-  m_RootOrder: 136
+  m_RootOrder: 130
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1710293077
 GameObject:
@@ -59798,16 +59806,16 @@ Transform:
   - {fileID: 792411568}
   - {fileID: 1707404291}
   - {fileID: 649923627}
+  - {fileID: 1255442246}
   - {fileID: 723472441}
   - {fileID: 1839523538}
+  - {fileID: 1707684044}
   - {fileID: 323014534}
   - {fileID: 454243882}
   - {fileID: 175500152}
   - {fileID: 78373862}
-  - {fileID: 1255442246}
   - {fileID: 135268730}
   - {fileID: 1855961382}
-  - {fileID: 1707684044}
   - {fileID: 1962766937}
   - {fileID: 1569753510}
   - {fileID: 447598957}
