@@ -37,9 +37,9 @@ public class ControllerCheck : MonoBehaviour
 
         if (Xbox_One_Controller == 1)
         {
-            inputSwitch = "GravitySwitchPS4";
-            inputJump = "JumpPS4";
-            inputInteraction = "InteractionPS4";
+            inputSwitch = "GravitySwitchXBOX";
+            inputJump = "JumpXBOX";
+            inputInteraction = "InteractionXBOX";
         }
         else if (PS4_Controller == 1)
         {
