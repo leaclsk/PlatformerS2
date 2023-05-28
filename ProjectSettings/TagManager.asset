@@ -18,6 +18,7 @@ TagManager:
   - BlackHole
   - InvisibleZone
   - TutoRes
+  - Boost
   layers:
   - Default
   - TransparentFX

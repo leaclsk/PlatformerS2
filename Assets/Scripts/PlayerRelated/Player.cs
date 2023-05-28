@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     Vector2 ref_velocity = Vector2.zero;
     float horizontal_value;
     [SerializeField] float moveSpeed_horizontal = 400.0f;
+    [SerializeField] float moveSpeedBoost = 410f;
+    [SerializeField] float animSpeed = 1;
     [SerializeField] float maxFallSpeed;
     //[Range(0, 1)][SerializeField] float smooth_time = 0.5f;
 
@@ -46,7 +48,14 @@ public class Player : MonoBehaviour
         
     }
 
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Boost"))
+        {
+            moveSpeed_horizontal = moveSpeedBoost;
+            animController.speed = animSpeed;
+        }
+    }
     void Update()
     {
        #region RUN
@@ -233,7 +242,7 @@ public class Player : MonoBehaviour
 
     }
 
-    private bool IsGrounded()// vérifie si le player est au sol
+    public bool IsGrounded()// vérifie si le player est au sol
     {
         animController.SetBool("Fall", false);
         animController.SetBool("Jumping", false);
