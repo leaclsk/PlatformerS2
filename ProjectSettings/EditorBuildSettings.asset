@@ -15,6 +15,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 1.unity
     guid: 2a369936c6ddf8c42bbc2a3689d66f5f
   - enabled: 1
+    path: Assets/Scenes/Frag1.unity
+    guid: cb6dfdbdea920324da06203dd4db77fe
+  - enabled: 1
     path: Assets/Scenes/Level2.unity
     guid: 6ad1a480e55ab374a9d15169dec44cd9
+  - enabled: 1
+    path: Assets/Scenes/Fragement2 1.unity
+    guid: 5ef4e431b52c390489bea3c47619acd5
+  - enabled: 1
+    path: Assets/Scenes/BOSS Scene.unity
+    guid: 39b772e53cc360745bbcc71024c3612c
+  - enabled: 1
+    path: Assets/Scenes/LastFrag.unity
+    guid: dbf8c55318da11844be9179414479e2b
   m_configObjects: {}

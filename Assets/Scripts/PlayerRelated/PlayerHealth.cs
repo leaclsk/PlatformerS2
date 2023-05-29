@@ -85,6 +85,7 @@ public class PlayerHealth : MonoBehaviour
             if (collision.gameObject.tag == "DriftZone")
             {
                 TakeDamage(4);
+                Death();
                 
             }
         }

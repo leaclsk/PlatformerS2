@@ -18,7 +18,7 @@ public class OpenChest : MonoBehaviour
     //ParticleSystem ps;
 
     [SerializeField] GameObject openLight;
-    bool open;
+   public bool open = false;
     [SerializeField] float timer;
     [SerializeField] float timeLight;
     Animator animLight;

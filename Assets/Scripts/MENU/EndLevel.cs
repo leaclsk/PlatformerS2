@@ -10,7 +10,7 @@ public class EndLevel : MonoBehaviour
 
     [SerializeField] Animator transition;
     
-    public float transitionTime = 1f;
+    public float transitionTime = 2f;
 
    
     private void OnTriggerEnter2D(Collider2D collision)

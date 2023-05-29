@@ -15,6 +15,7 @@ public class SwitchCamera : MonoBehaviour
     [SerializeField] bool Cam8;
     [SerializeField] bool Cam9;
     [SerializeField] bool fangenMoment;
+    [SerializeField] bool CamEnd;
 
     [SerializeField] Animator animatorFangen;
     [SerializeField] PlayerHealth playerhealth;
@@ -104,6 +105,13 @@ public class SwitchCamera : MonoBehaviour
             animatorFangen = GameObject.Find("CM vcam Boss 1").GetComponent<Animator>();
             animatorFangen.SetBool("CamFangen", true);
         }
+        if (CamEnd)
+        {
+            if (collision.CompareTag("Player"))
+            {
+                animator.SetBool("CamEnd", true);
+            }
+        }
 
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -119,6 +127,7 @@ public class SwitchCamera : MonoBehaviour
             if (CamBoss1) animator.SetBool("CamBoss1", false);
             if (Cam8) animator.SetBool("Cam8", false);
             if (Cam9) animator.SetBool("Cam9", false);
+            if (CamEnd) animator.SetBool("CamEnd", false);
         }
         
     }

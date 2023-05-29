@@ -8,7 +8,7 @@ public class ItemCollector : MonoBehaviour
     [SerializeField] public int Stars = 0;
     
     [SerializeField] private Text starsText;
-    [SerializeField] ChangeZone changeZone;
+   // [SerializeField] ChangeZone changeZone;
     
 
     private void Start()
