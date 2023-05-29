@@ -46,13 +46,14 @@ public class ListCinematique : MonoBehaviour
             PlayVideo();
             
 
-            if (ajout == 8)
-            {
-                
-                endLevel.StartCoroutine(endLevel.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
-            }
+            
         }
-        
+        if (ajout == 8)
+        {
+
+            endLevel.StartCoroutine(endLevel.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        }
+
     }
 
     void PlayVideo()

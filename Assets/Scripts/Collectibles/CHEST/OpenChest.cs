@@ -44,7 +44,7 @@ public class OpenChest : MonoBehaviour
      
     void Update()
     {
-        if (Input.GetButton(controllerCheck.inputInteraction) && isRange)
+        if (isRange && Input.GetButton(controllerCheck.inputInteraction))
         {
             Chestopening();
         }

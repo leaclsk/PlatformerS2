@@ -16,13 +16,28 @@ public class SwitchCamera : MonoBehaviour
     [SerializeField] bool Cam9;
     [SerializeField] bool fangenMoment;
     [SerializeField] bool CamEnd;
+    [SerializeField] bool CamFrag1;
+    [SerializeField] bool CamFrag2;
+    [SerializeField] bool CamFrag3;
 
     [SerializeField] Animator animatorFangen;
+    [SerializeField] Animator animatorFrag1;
     [SerializeField] PlayerHealth playerhealth;
+    [SerializeField] BoxCollider2D boxCollider;
+    [SerializeField] CapsuleCollider2D capsuleCollider;
 
     private void Start()
     {
+        if(CamFrag1 || CamFrag3)
+        {
+            boxCollider = GetComponent<BoxCollider2D>();
+        }
+        if(CamFrag2)
+        {
+            capsuleCollider = GetComponent<CapsuleCollider2D>();
+        }
         playerhealth = GameObject.Find("Piup").GetComponent<PlayerHealth>();
+
     }
     private void Update()
     {
@@ -109,7 +124,35 @@ public class SwitchCamera : MonoBehaviour
         {
             if (collision.CompareTag("Player"))
             {
-                animator.SetBool("CamEnd", true);
+                //animator.SetBool("CamEnd", true);
+                animator.SetBool("CamBoss1", false);
+            }
+        }
+        if (CamFrag1)
+        {
+            if (collision.CompareTag("Player"))
+            {
+                animator.SetBool("CamFrag1", true);
+                animatorFrag1 = GameObject.Find("CM vcamFrag1").GetComponent<Animator>();
+                animatorFrag1.SetBool("Frag1", true);
+            }
+        }
+        if (CamFrag2)
+        {
+            if (collision.CompareTag("Player"))
+            {
+                animator.SetBool("CamFrag2", true);
+                animatorFrag1 = GameObject.Find("CM vcamFrag2").GetComponent<Animator>();
+                animatorFrag1.SetBool("Frag2", true);
+            }
+        }
+        if (CamFrag3)
+        {
+            if (collision.CompareTag("Player"))
+            {
+                animator.SetBool("CamFrag3", true);
+                animatorFrag1 = GameObject.Find("CM vcamFrag3").GetComponent<Animator>();
+                animatorFrag1.SetBool("Frag3", true);
             }
         }
 
@@ -128,6 +171,21 @@ public class SwitchCamera : MonoBehaviour
             if (Cam8) animator.SetBool("Cam8", false);
             if (Cam9) animator.SetBool("Cam9", false);
             if (CamEnd) animator.SetBool("CamEnd", false);
+            if (CamFrag1)
+            {
+                animator.SetBool("CamFrag1", false); 
+                boxCollider.enabled = false;
+            }
+            if (CamFrag2)
+            {
+                animator.SetBool("CamFrag2", false); 
+                capsuleCollider.enabled = false;
+            }
+            if (CamFrag3)
+            {
+                animator.SetBool("CamFrag3", false);
+                boxCollider.enabled = false;
+            }
         }
         
     }

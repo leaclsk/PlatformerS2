@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class StarFrag : MonoBehaviour
 {
+    Player player;
     [SerializeField] Animator animator;
-    [SerializeField] ParticleSystem ps;
-    [SerializeField] Animator lightAnimator;
+    
+    //[SerializeField] Animator lightAnimator;
+    [SerializeField] GameObject lightAnimator;
+    Turn turn;
+    CapsuleCollider2D fragCollider;
+    
 
 
 
     private void Start()
     {
-        //ps.Pause();
+        turn = GetComponent<Turn>();
+        player = GameObject.Find("Piup").GetComponent<Player>();
+        fragCollider = GetComponent<CapsuleCollider2D>();
+        
     }
     private void Update()
     {
@@ -22,12 +30,21 @@ public class StarFrag : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            //ps.Play();
-            animator.SetBool("Collected", true);
-            //lightAnimator.SetBool("Collected", true);
+            StartCoroutine("CollectingFragment");
         }
     }
 
+    IEnumerator CollectingFragment()
+    {
+        player.rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        fragCollider.enabled = false;
+        turn.enabled = false;
+        Destroy(lightAnimator);
+        animator.SetBool("Collected", true);
+        yield return new WaitForSeconds(2f);
+        player.rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        
 
+    }
 
 }
