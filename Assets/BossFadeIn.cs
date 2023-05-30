@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class BossFadeIn : MonoBehaviour
 {
-     Player player;
+    Player player;
     [SerializeField] Animator fangenAnim;
     [SerializeField] Animator fangenRunAnim;
     [SerializeField] Animator speedCam;
     GameObject cam;
     GameObject fangen;
-   [SerializeField] GameObject fangenRun;
-
-     float timer;
+    [SerializeField] GameObject fangenRun;
+    [SerializeField] ParticleSystem ps;
+    float timer;
     [SerializeField] float timeBetweenTurn;
 
     bool inChase;
@@ -22,6 +22,7 @@ public class BossFadeIn : MonoBehaviour
     bool pass;
     void Start()
     {
+        
         timer = timeBetweenTurn;
         cam = GameObject.Find("Camera");
         fangen = GameObject.Find("FANGEN");
@@ -66,8 +67,10 @@ public class BossFadeIn : MonoBehaviour
     IEnumerator TurningMoment ()
     {
         fangenRunAnim.SetTrigger("Turning");
+        ps.Play();
         speedCam.speed = cameraSpeedDuringTurn;
         yield return new WaitForSeconds(1.5f);
+        
         speedCam.speed = Mathf.SmoothStep(speedCam.speed, 1, 1f); //ne marche pas pour raison inconnue
 
     }
