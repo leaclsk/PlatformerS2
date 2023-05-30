@@ -12,6 +12,7 @@ public class ControllerCheck : MonoBehaviour
     public string inputSwitch = "";
     public string inputJump = "";
     public string inputInteraction = "";
+    public string inputPause = "";
     void Update()
     {
         string[] names = Input.GetJoystickNames();
@@ -40,18 +41,22 @@ public class ControllerCheck : MonoBehaviour
             inputSwitch = "GravitySwitchXBOX";
             inputJump = "JumpXBOX";
             inputInteraction = "InteractionXBOX";
+            inputPause = "pauseXBOX";
+
         }
         else if (PS4_Controller == 1)
         {
             inputSwitch = "GravitySwitchPS4";
             inputJump = "JumpPS4";
             inputInteraction = "InteractionPS4";
+            inputPause = "pausePS4";
         }
         else
         {
             inputJump = "Jump";
             inputSwitch = "GravitySwitch";
             inputInteraction = "Interaction";
+            inputPause = "pause";
             // there is no controllers
         }
     }

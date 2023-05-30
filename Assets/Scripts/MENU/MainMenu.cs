@@ -38,10 +38,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField] VideoPlayer video3;
     [SerializeField] VideoPlayer video4;
     [SerializeField] VideoPlayer video5;
-    [SerializeField] VideoPlayer video6;
-    [SerializeField] VideoPlayer video7;
     [SerializeField] VideoPlayer videoVide;
-    bool isMenuDone;
+    [SerializeField] GameObject FondNoir;
+    bool isMenuDone =false;
     #endregion
 
     [SerializeField] EndLevel endLevel;
@@ -79,8 +78,6 @@ public class MainMenu : MonoBehaviour
         sceneVideo.Add(video3);
         sceneVideo.Add(video4);
         sceneVideo.Add(video5);
-        sceneVideo.Add(video6);
-        sceneVideo.Add(video7);
         sceneVideo.Add(videoVide);
         video = sceneVideo[0];
 #endregion
@@ -94,11 +91,12 @@ public class MainMenu : MonoBehaviour
             video = sceneVideo[+ajout];
             PlayVideo();
 
-            if (ajout == 7)
+            if (ajout == 6)
             {
                 endLevel.StartCoroutine(endLevel.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
             }
         }
+        
     }
     public void PlayCinematic()
     {  
@@ -135,7 +133,10 @@ public class MainMenu : MonoBehaviour
         #endregion
 
         yield return new WaitForSeconds(3f); // attends la fin du fadeout
-        PlayVideo(); 
+        
+        if(!isMenuDone)PlayVideo();
+        FondNoir.SetActive(true);
+
         isMenuDone = true; //lancer les autres cinematiques
 
         //yield return new WaitForSeconds(transitionTime);

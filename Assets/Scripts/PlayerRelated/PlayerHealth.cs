@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class PlayerHealth : MonoBehaviour
     float timer;
 
     [SerializeField] bool BlackHole = false;
+    [SerializeField] bool isBossScene = false;
+    [SerializeField] EndLevel endLevel;
 
 
 
@@ -47,6 +50,13 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
+
+        if(isBossScene && dead)
+        {
+            //SceneManager.LoadScene(6);
+            StartCoroutine(endLevel.LoadLevel(6));
+
+        }
         #region timerInREd
         if (timer > 0 && damaged)
         {

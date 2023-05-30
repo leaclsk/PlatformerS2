@@ -7,25 +7,30 @@ public class ItemCollector : MonoBehaviour
 {
     [SerializeField] public int Stars = 0;
     
-    [SerializeField] private Text starsText;
+    public Text starsText;
+
+    public static int totalStars = 0;
    // [SerializeField] ChangeZone changeZone;
     
 
     private void Start()
     {
-
-        
+    
     }
-  
+
+    private void Update()
+    {
+        starsText.text = Stars + "";
+
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
       
             if (collision.gameObject.CompareTag("Star"))
             { 
-                //Destroy(collision.gameObject);
+                
                 Stars++;
-                starsText.text = Stars + "";
-                //collision.gameObject.GetComponent<B>().enabled = false;
+                
             }
 
         
