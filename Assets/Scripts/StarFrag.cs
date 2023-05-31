@@ -11,7 +11,9 @@ public class StarFrag : MonoBehaviour
     [SerializeField] GameObject lightAnimator;
     Turn turn;
     CapsuleCollider2D fragCollider;
-    
+    [SerializeField] EndLevel endLevel;
+    [SerializeField] bool isBossScene;
+
 
 
 
@@ -31,6 +33,12 @@ public class StarFrag : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             StartCoroutine("CollectingFragment");
+
+            if(isBossScene)
+            {
+                StartCoroutine("LastFragment");
+            }
+           
         }
     }
 
@@ -47,4 +55,10 @@ public class StarFrag : MonoBehaviour
 
     }
 
+    IEnumerator LastFragment()
+    {
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(endLevel.LoadLevel(7));
+
+    }
 }

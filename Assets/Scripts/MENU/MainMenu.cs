@@ -50,6 +50,7 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
 
+        Screen.SetResolution(1920, 1080, true);
         #region GETCOMPONENT ELEMENTS MENU
         ps = GameObject.Find("ParticlesSys").GetComponent<ParticleSystem>();
 

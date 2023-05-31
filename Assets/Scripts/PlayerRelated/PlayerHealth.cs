@@ -51,7 +51,7 @@ public class PlayerHealth : MonoBehaviour
     private void Update()
     {
 
-        if(isBossScene && dead)
+        if(isBossScene && dead) // mort dans la scene du boss
         {
             //SceneManager.LoadScene(6);
             StartCoroutine(endLevel.LoadLevel(6));

@@ -21,6 +21,9 @@ public class MovingPlatform : MonoBehaviour
     PlayerHealth health;
     ControllerCheck controlc;
 
+    bool chase;
+   [SerializeField] Transform pointDepart;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -36,11 +39,14 @@ public class MovingPlatform : MonoBehaviour
 
     void Update()
     {
-        if (health.Life < 0 && !isPiston)
+        if (health.Life == -1 && !isPiston)
         {
             moving = false;
-            if(Input.GetButtonDown(controlc.inputInteraction))
-            transform.position = points[depart].position;
+            if(Input.GetButtonDown(controlc.inputJump))
+            {
+                transform.position = points[depart].position;
+            }
+            
         }
 
 
@@ -85,7 +91,7 @@ public class MovingPlatform : MonoBehaviour
         { 
         if(collision.gameObject.tag == "Player")
         {
-            //Debug.Log(moving);
+            
             moving = true;
         }
         }

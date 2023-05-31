@@ -67,7 +67,7 @@ public class BossFadeIn : MonoBehaviour
     IEnumerator TurningMoment ()
     {
         fangenRunAnim.SetTrigger("Turning");
-        ps.Play();
+        
         speedCam.speed = cameraSpeedDuringTurn;
         yield return new WaitForSeconds(1.5f);
         
