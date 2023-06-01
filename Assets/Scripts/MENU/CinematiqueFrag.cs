@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class CinematiqueFrag : MonoBehaviour
 {
     [SerializeField] VideoPlayer video;
+    [SerializeField] GameObject videoCine;
+    [SerializeField] GameObject fondNoir;
     [SerializeField] EndLevel endLevel;
     [SerializeField] float timer;
     void Start()
@@ -27,8 +29,11 @@ public class CinematiqueFrag : MonoBehaviour
         video.Play();
         yield return new WaitForSeconds(timer);
       
-        StartCoroutine(endLevel.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
-      
+        //StartCoroutine(endLevel.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+
+        videoCine.SetActive(false);
+        fondNoir.SetActive(false);
+
 
     }
 }
