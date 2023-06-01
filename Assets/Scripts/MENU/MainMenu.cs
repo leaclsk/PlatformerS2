@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static System.TimeZoneInfo;
 using UnityEngine.Video;
+using UnityEngine.UI;
+
 
 public class MainMenu : MonoBehaviour
 {
@@ -41,12 +42,24 @@ public class MainMenu : MonoBehaviour
     [SerializeField] VideoPlayer videoVide;
     [SerializeField] GameObject FondNoir;
     bool isMenuDone =false;
+
+    bool incinematique;
+    float timer;
+    [SerializeField] GameObject sliderPass;
+    [SerializeField] Slider slider;
+    [SerializeField] EndLevel endLevel;
+    [SerializeField] GameObject passCanva;
+    float timeToHoldForPass = 1.3f;
     #endregion
 
-    [SerializeField] EndLevel endLevel;
-    
+
     public float transitionTime = 1.30f;
 
+
+    bool pass;
+
+    float timerBetween;
+    float timerBetweenRef = 2;
     private void Start()
     {
 
@@ -87,7 +100,7 @@ public class MainMenu : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetButtonDown(controlC.inputJump) && isMenuDone)
+        /*if (pass && isMenuDone)
         {
             video = sceneVideo[+ajout];
             PlayVideo();
@@ -96,8 +109,48 @@ public class MainMenu : MonoBehaviour
             {
                 endLevel.StartCoroutine(endLevel.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
             }
+        }*/
+        if(pass && timerBetween < timerBetweenRef)
+        {
+            slider.value = 0;
+            timerBetween += Time.deltaTime;
+            if (timerBetween > timerBetweenRef) timerBetween = timerBetweenRef;
+            if (timerBetween == timerBetweenRef)
+            {
+                pass = false;
+                timerBetween = 0;
+            }
         }
-        
+
+        if (incinematique && Input.GetButton(controlC.inputJump) && !pass)
+        {
+            sliderPass.SetActive(true);
+            timer += Time.deltaTime;
+            slider.value = timer;
+            if (timer > timeToHoldForPass) timer = timeToHoldForPass;
+            if (timer == timeToHoldForPass)
+            {
+                video = sceneVideo[+ajout];
+                PlayVideo();
+
+                if (ajout == 6)
+                {
+                    endLevel.StartCoroutine(endLevel.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+                }
+            }
+        }
+        else
+        {
+            if (timer > 0)
+            {
+                timer -= Time.deltaTime * 1.5f;
+                slider.value = timer;
+
+            }
+            if (timer < 0)  timer = 0;
+            //if (timer == 0) sliderPass.SetActive(false);
+        }
+
     }
     public void PlayCinematic()
     {  
@@ -136,6 +189,9 @@ public class MainMenu : MonoBehaviour
         yield return new WaitForSeconds(3f); // attends la fin du fadeout
         
         if(!isMenuDone)PlayVideo();
+        incinematique = true;
+        passCanva.SetActive(true);
+
         FondNoir.SetActive(true);
 
         isMenuDone = true; //lancer les autres cinematiques
@@ -155,5 +211,7 @@ public class MainMenu : MonoBehaviour
     {
         video.Play();
         ajout++;
+        timer = 0;
+        pass = true;
     }
 }

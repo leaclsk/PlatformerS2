@@ -19,6 +19,7 @@ TagManager:
   - InvisibleZone
   - TutoRes
   - Boost
+  - FinTuto
   layers:
   - Default
   - TransparentFX

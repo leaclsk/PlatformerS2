@@ -16,6 +16,9 @@ public class SwitchGravity : MonoBehaviour
     [SerializeField] float nextSwitch;
     //[SerializeField] private Image GravityCoolDown;
     ControllerCheck controlC;
+    [SerializeField] bool isTutorial;
+    bool switchAvailable;
+    bool activ;
 
 
     void Start()
@@ -23,32 +26,41 @@ public class SwitchGravity : MonoBehaviour
         gravitySwitch = true;
         rb = GetComponent<Rigidbody2D>();
         controlC = GetComponent<ControllerCheck>();
+        if (isTutorial)
+        {
+            switchAvailable = false;
+        }
+        else switchAvailable = true;
     }
     
     void Update()
     {
-        // inverser la gravité (avec cooldown).
-        if(Time.time > nextSwitch)
+        if (switchAvailable == true)
         {
-            //GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
-
-            if (Input.GetButtonDown(controlC.inputSwitch) && gravitySwitch)
+            if (Time.time > nextSwitch)
             {
-                 rb.gravityScale *= -1;
+                //GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
 
-                 Rotation();
-                 Flip();
+                if (Input.GetButtonDown(controlC.inputSwitch) && gravitySwitch)
+                {
+                    rb.gravityScale *= -1;
 
-                 //GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 225, 25);
+                    Rotation();
+                    Flip();
 
-                 nextSwitch = Time.time + cooldownTime;
+                    //GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 225, 25);
+
+                    nextSwitch = Time.time + cooldownTime;
+                }
+
             }
-    
-        }
 
-        SensGravity = rb.gravityScale;
-        if(!inTheZone) gravitySwitch = true;
-        else if(inTheZone) gravitySwitch = false;
+            SensGravity = rb.gravityScale;
+            if (!inTheZone) gravitySwitch = true;
+            else if (inTheZone) gravitySwitch = false;
+        }
+        // inverser la gravité (avec cooldown).
+        
 
         //cooldown UI grise 
         //if(!gravitySwitch) GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 225, 25);
@@ -67,6 +79,16 @@ public class SwitchGravity : MonoBehaviour
 
 
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+        if(collision.CompareTag("FinTuto") && activ)
+        {
+            switchAvailable = false;
+            activ = !activ;
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("GravityUp") || collision.CompareTag("GravityDown"))
@@ -74,6 +96,10 @@ public class SwitchGravity : MonoBehaviour
             inTheZone = false;
             //GravityCoolDown.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             
+        }
+        if (collision.CompareTag("FinTuto"))
+        {
+            switchAvailable = true;
         }
     }
 

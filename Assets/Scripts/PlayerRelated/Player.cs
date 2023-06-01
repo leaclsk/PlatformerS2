@@ -17,8 +17,8 @@ public class Player : MonoBehaviour
     
     Vector2 ref_velocity = Vector2.zero;
     float horizontal_value;
-    [SerializeField] float moveSpeed_horizontal = 400.0f;
-    [SerializeField] float moveSpeedBoost = 410f;
+    [SerializeField] float moveSpeed_horizontal = 410.0f;
+    [SerializeField] float moveSpeedBoost = 420f;
     [SerializeField] float animSpeed = 1;
     [SerializeField] float maxFallSpeed;
     //[Range(0, 1)][SerializeField] float smooth_time = 0.5f;

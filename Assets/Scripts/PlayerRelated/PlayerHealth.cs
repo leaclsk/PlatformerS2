@@ -32,6 +32,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] bool BlackHole = false;
     [SerializeField] bool isBossScene = false;
     [SerializeField] EndLevel endLevel;
+    [SerializeField] GameObject deathCanvas;
+   // [SerializeField] Animator levelLoader;
 
 
 
@@ -138,7 +140,8 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public void Death()
-    {  
+    {
+        deathCanvas.SetActive(true);
         rb.velocity = new Vector2(rb.velocity.x * -25f, rb.velocity.y * 6f);  
         dead = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -146,8 +149,9 @@ public class PlayerHealth : MonoBehaviour
         
         if (Input.GetButtonDown(controlC.inputJump))
         {
-
+            //StartCoroutine("DeathTransition");          
             Respawn = true;
+            deathCanvas.SetActive(false);
             gameObject.transform.position = PosRespawn;
             //healthBar.SetMaxHealth(maxHealth);
 
@@ -170,7 +174,15 @@ public class PlayerHealth : MonoBehaviour
     public void SetPosRespawn(Vector3 Position)
     {      
         this.transform.position = PosRespawn;
+        deathCanvas.SetActive(false);
     }
+
+    //IEnumerable DeathTransition()
+    //{
+    //    levelLoader.SetTrigger("Start");
+    //    yield return new WaitForSeconds(1.30f);
+    //    levelLoader.SetTrigger("End");
+    //}
     #endregion
 
 }
