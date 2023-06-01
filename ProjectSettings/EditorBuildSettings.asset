@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Level2.unity
     guid: 6ad1a480e55ab374a9d15169dec44cd9
   - enabled: 1
-    path: Assets/Scenes/Fragement2 1.unity
+    path: Assets/SCENES/Fragement2.unity
     guid: 5ef4e431b52c390489bea3c47619acd5
   - enabled: 1
     path: Assets/Scenes/BOSS Scene.unity
