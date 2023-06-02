@@ -14860,6 +14860,8 @@ MonoBehaviour:
   switchG: {fileID: 6381584297446112324}
   rb: {fileID: 3563314058016516250}
   moveSpeed_horizontal: 350
+  moveSpeedBoost: 420
+  animSpeed: 1
   maxFallSpeed: -15
   groundCheck: {fileID: 8208233420519787135}
   groundLayer:
@@ -14904,6 +14906,7 @@ MonoBehaviour:
   SensGravity: 0
   cooldownTime: 0.7
   nextSwitch: 0
+  isTutorial: 0
 --- !u!114 &8208233421171336064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14923,6 +14926,9 @@ MonoBehaviour:
   cooldownTime: 1
   timeInRed: 0.4
   BlackHole: 0
+  isBossScene: 0
+  endLevel: {fileID: 0}
+  deathCanvas: {fileID: 0}
 --- !u!114 &8208233421171336081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14936,8 +14942,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stars: 0
+  audioSource: {fileID: 0}
   starsText: {fileID: 0}
-  changeZone: {fileID: 0}
 --- !u!114 &8208233421171336110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14978,6 +14984,7 @@ MonoBehaviour:
   inputSwitch: 
   inputJump: 
   inputInteraction: 
+  inputPause: 
 --- !u!1 &4774955716028458096
 GameObject:
   m_ObjectHideFlags: 0

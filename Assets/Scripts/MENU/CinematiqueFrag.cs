@@ -8,7 +8,7 @@ public class CinematiqueFrag : MonoBehaviour
 {
     [SerializeField] VideoPlayer video;
     [SerializeField] GameObject videoCine;
-    [SerializeField] GameObject fondNoir;
+    [SerializeField] Animator fondNoir;
     [SerializeField] EndLevel endLevel;
     [SerializeField] float timer;
     void Start()
@@ -32,7 +32,7 @@ public class CinematiqueFrag : MonoBehaviour
         //StartCoroutine(endLevel.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
 
         videoCine.SetActive(false);
-        fondNoir.SetActive(false);
+        fondNoir.SetTrigger("FadeOut");
 
 
     }

@@ -26,8 +26,11 @@ public class SwitchCamera : MonoBehaviour
     [SerializeField] BoxCollider2D boxCollider;
     [SerializeField] CapsuleCollider2D capsuleCollider;
 
+ 
+
     private void Start()
     {
+        
         if(CamFrag1 || CamFrag3)
         {
             boxCollider = GetComponent<BoxCollider2D>();
