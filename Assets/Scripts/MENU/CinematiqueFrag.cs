@@ -11,6 +11,8 @@ public class CinematiqueFrag : MonoBehaviour
     [SerializeField] Animator fondNoir;
     [SerializeField] EndLevel endLevel;
     [SerializeField] float timer;
+
+    [SerializeField] bool IsLastCine;
     void Start()
     {
         StartCoroutine("Fragement");
@@ -28,11 +30,19 @@ public class CinematiqueFrag : MonoBehaviour
 
         video.Play();
         yield return new WaitForSeconds(timer);
-      
-        //StartCoroutine(endLevel.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+
+        if (!IsLastCine)
+        {
+            StartCoroutine(endLevel.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        }
+           
 
         videoCine.SetActive(false);
-        fondNoir.SetTrigger("FadeOut");
+        if(IsLastCine)
+        {
+            fondNoir.SetTrigger("FadeOut");
+
+        }
 
 
     }

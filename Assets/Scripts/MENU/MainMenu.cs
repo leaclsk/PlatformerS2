@@ -8,6 +8,8 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+
+    [SerializeField] AudioManager audioManager;
     #region TRANSITIONS FIN MENU (FADE OUT)
     [SerializeField] Animator transition;
     Animator animatorMenu;
@@ -62,8 +64,10 @@ public class MainMenu : MonoBehaviour
     float timerBetweenRef = 2;
     private void Start()
     {
+        audioManager.PlayMusic();
 
         Screen.SetResolution(1920, 1080, true);
+
         #region GETCOMPONENT ELEMENTS MENU
         ps = GameObject.Find("ParticlesSys").GetComponent<ParticleSystem>();
 
@@ -100,16 +104,7 @@ public class MainMenu : MonoBehaviour
     }
     private void Update()
     {
-        /*if (pass && isMenuDone)
-        {
-            video = sceneVideo[+ajout];
-            PlayVideo();
-
-            if (ajout == 6)
-            {
-                endLevel.StartCoroutine(endLevel.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
-            }
-        }*/
+      
         if(pass && timerBetween < timerBetweenRef)
         {
             slider.value = 0;

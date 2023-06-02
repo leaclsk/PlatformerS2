@@ -51,7 +51,7 @@ public class OpenChest : MonoBehaviour
 
         if (timer > 0 && open)
         {
-            openLight.SetActive(true);
+            //openLight.SetActive(true);
             timer -= Time.deltaTime;
         }
 

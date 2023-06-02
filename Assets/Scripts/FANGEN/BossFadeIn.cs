@@ -18,11 +18,22 @@ public class BossFadeIn : MonoBehaviour
     bool inChase;
     [SerializeField] float cameraSpeedDuringTurn = 1.8f;
 
+    [SerializeField] Animator BasMusicAnim;
+    [SerializeField] Animator BossMusicAnim;
+    [SerializeField] AudioSource BaseMusic;
+    [SerializeField] AudioSource BossMusic;
+
 
     bool pass;
     void Start()
     {
-        
+        BaseMusic = GameObject.Find("Audio").GetComponent<AudioSource>();
+        BasMusicAnim = GameObject.Find("Audio").GetComponent<Animator>();
+
+        BasMusicAnim.SetBool("FadeOut", true);
+        BossMusic.Play();
+        BossMusicAnim.SetBool("FadeOut", false);
+
         timer = timeBetweenTurn;
         cam = GameObject.Find("Camera");
         fangen = GameObject.Find("FANGEN");

@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     //[Range(0, 1)][SerializeField] float smooth_time = 0.5f;
 
     #region JUMP
+    [SerializeField] AudioSource audioSourceJump;
+   
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask groundLayer;
     //float jumpForce = 12f;
@@ -44,7 +46,8 @@ public class Player : MonoBehaviour
         animController = GetComponent<Animator>();
         controlC = GetComponent<ControllerCheck>(); 
         switchG = GetComponent<SwitchGravity>();
-           
+
+        audioSourceJump.volume = 0.50f;
         
     }
 
@@ -71,8 +74,9 @@ public class Player : MonoBehaviour
         //var dir = transform.position - hit.transform.position;
         //transform.position += dir.normalized * movemagnitude;
 
-        if( IsGrounded() )
+        if( IsGrounded())
         {
+           
             coyoteTimeCounter = coyoteTime;
 
         }
@@ -177,6 +181,7 @@ public class Player : MonoBehaviour
      {
         if(collision.gameObject.layer == 3)
         {
+            audioSourceJump.Play();
             animController.SetBool("Fall", false);
             animController.SetBool("Jumping", false);
         }
@@ -185,43 +190,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        #region OLD JUMP
-
-        //if(Input.GetButtonDown("Jump"))
-        //{
-        //    if(can_jump)
-        //    {
-        //        is_jumping = false;
-        //        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        //        can_jump = false;
-        //    }
-        //}
-        //if(Input.GetButtonUp("Jump") && rb.velocity.y >0f)
-        //{
-        //    is_jumping = false;
-        //    rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-        //    can_jump = false;
-        //}
-
-        //if (is_jumping && can_jump)
-        //{
-        //    if (rb.gravityScale > 0)
-        //    {
-        //        is_jumping = false;
-        //        rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-        //        can_jump = false;
-
-
-        //    }
-        //    else if (rb.gravityScale < 0)
-        //    {
-        //        is_jumping = false;
-        //        rb.AddForce(new Vector2(0, jumpForce * -1), ForceMode2D.Impulse);
-        //        can_jump = false;
-
-        //    }
-        //}
-#endregion 
+        
 
         Vector2 target_velocity = new Vector2(horizontal_value * moveSpeed_horizontal * Time.fixedDeltaTime, rb.velocity.y);
         rb.velocity = Vector2.SmoothDamp(rb.velocity, target_velocity, ref ref_velocity, 0.05f);
@@ -248,6 +217,7 @@ public class Player : MonoBehaviour
         animController.SetBool("Jumping", false);
         //if(rb.velocity.x == 0) animController.SetTrigger("GroundTouch");
         return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
+        
     }
 
 }

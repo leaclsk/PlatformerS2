@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class ItemCollector : MonoBehaviour
 {
     [SerializeField] public int Stars = 0;
-    [SerializeField] AudioSource audioSource;
-    
+    [SerializeField] AudioSource audioSourceStars;
+    [SerializeField] AudioSource audioSourceHeal;
+
     public Text starsText;
 
     public static int totalStars = 0;
@@ -29,9 +30,21 @@ public class ItemCollector : MonoBehaviour
       
             if (collision.gameObject.CompareTag("Star"))
             {
-            audioSource.Play();
+            if (!audioSourceStars.isPlaying)
+            {
+                audioSourceStars.Play();
+            }
+               
             Stars++;
                 
+            }
+
+            if(collision.gameObject.CompareTag("FollowingStar"))
+            {
+            if (!audioSourceHeal.isPlaying)
+            {
+                audioSourceHeal.Play();
+            }
             }
 
         
