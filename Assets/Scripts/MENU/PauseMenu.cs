@@ -15,6 +15,11 @@ public class PauseMenu : MonoBehaviour
     bool inOption;
     [SerializeField] Player player;
 
+    private void Start()
+    {
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+    }
     void Update()
     {
         if(Input.GetButtonDown(controlCheck.inputPause))
