@@ -10,13 +10,10 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        //    if (isBossScene)
-        //    {
-        //        audioBoss.Play();
-
-        //    }
-        //    else audioSource.Play();
-        //}
+        if(isBossScene)
+        {
+            audioSource.Play();
+        }
     }
 
     private void Awake()
