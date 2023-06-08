@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 using UnityEngine.UI;
-
+using Unity.VisualScripting;
 
 public class MainMenu : MonoBehaviour
 {
-
+    [SerializeField] GameObject animFolder;
+    [SerializeField] GameObject animPic;
     [SerializeField] AudioManager audioManager;
     #region TRANSITIONS FIN MENU (FADE OUT)
     [SerializeField] Animator transition;
@@ -41,6 +42,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] VideoPlayer video3;
     [SerializeField] VideoPlayer video4;
     [SerializeField] VideoPlayer video5;
+    [SerializeField] VideoPlayer video6;
     [SerializeField] VideoPlayer videoVide;
     [SerializeField] GameObject FondNoir;
     bool isMenuDone =false;
@@ -51,7 +53,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Slider slider;
     [SerializeField] EndLevel endLevel;
     [SerializeField] GameObject passCanva;
-    float timeToHoldForPass = 1.3f;
+    float timeToHoldForPass = 1f;
     #endregion
 
 
@@ -96,6 +98,7 @@ public class MainMenu : MonoBehaviour
         sceneVideo.Add(video3);
         sceneVideo.Add(video4);
         sceneVideo.Add(video5);
+        sceneVideo.Add(video6);
         sceneVideo.Add(videoVide);
         video = sceneVideo[0];
 #endregion
@@ -127,11 +130,11 @@ public class MainMenu : MonoBehaviour
             {
                 video = sceneVideo[+ajout];
                 PlayVideo();
-
-                if (ajout == 6)
-                {
+                
+                    if (ajout == 7)
+                    {
                     endLevel.StartCoroutine(endLevel.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
-                }
+                    }
             }
         }
         else
@@ -182,11 +185,12 @@ public class MainMenu : MonoBehaviour
         #endregion
 
         yield return new WaitForSeconds(3f); // attends la fin du fadeout
-        
-        if(!isMenuDone)PlayVideo();
+        animFolder.SetActive(false);
+        animPic.SetActive(false);
+        if (!isMenuDone)PlayVideo();
         incinematique = true;
         passCanva.SetActive(true);
-
+        
         FondNoir.SetActive(true);
 
         isMenuDone = true; //lancer les autres cinematiques

@@ -899,7 +899,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 50
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -961,6 +961,73 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &396788972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 396788973}
+  - component: {fileID: 396788974}
+  m_Layer: 0
+  m_Name: Video6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &396788973
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396788972}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.080219, y: 0.24546823, z: -2.9487078}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 713421357}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!328 &396788974
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396788972}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: 3aa21f5fff7dd874486833eaba3bd7fe, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 1538352596}
+  m_TargetTexture: {fileID: 0}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 1
+  m_AspectRatio: 1
+  m_DataSource: 0
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 0
+  m_SkipOnDrop: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
 --- !u!1 &442906549
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,6 +1074,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e78695c2de6b674f9c05ec75e5885b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animFolder: {fileID: 962435771}
+  animPic: {fileID: 518686942}
   audioManager: {fileID: 1140125650}
   transition: {fileID: 1657921149}
   logoAnimation: {fileID: 1829516146}
@@ -1030,6 +1099,7 @@ MonoBehaviour:
   video3: {fileID: 454754815}
   video4: {fileID: 1200170931}
   video5: {fileID: 948871317}
+  video6: {fileID: 396788974}
   videoVide: {fileID: 1725358960}
   FondNoir: {fileID: 268484060}
   sliderPass: {fileID: 213554289}
@@ -1994,6 +2064,7 @@ Transform:
   - {fileID: 454754814}
   - {fileID: 1200170930}
   - {fileID: 948871316}
+  - {fileID: 396788973}
   - {fileID: 1725358959}
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -2394,7 +2465,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948871315}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 8152b40d5d4647946bd8c9f18ff7c397, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: f91644d940b77a84fbe946a8cbca9f96, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 1538352596}
@@ -2628,7 +2699,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200170929}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: e71da3d2484bf2d49aab967841bfdbef, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: b8178027708618d4fb6b6c610ce11d2e, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 1538352596}
@@ -9403,7 +9474,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 713421357}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!328 &1725358960
 VideoPlayer:

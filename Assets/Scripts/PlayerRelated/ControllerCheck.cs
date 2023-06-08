@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class ControllerCheck : MonoBehaviour
 {
+    [SerializeField] GameObject DeathXbox;
+    [SerializeField] GameObject DeathPs4;
+
+    [SerializeField] bool isTutorial;
+    [SerializeField] GameObject uiPS4;
+    [SerializeField] GameObject uiXBOX;
 
 
     public int Xbox_One_Controller = 0;
@@ -43,6 +49,15 @@ public class ControllerCheck : MonoBehaviour
             inputInteraction = "InteractionXBOX";
             inputPause = "pauseXBOX";
 
+            DeathXbox.SetActive(true);
+            DeathPs4.SetActive(false);
+
+            if(isTutorial)
+            {
+                uiXBOX.SetActive(true);
+                uiPS4.SetActive(false);
+            }
+
         }
         else if (PS4_Controller == 1)
         {
@@ -50,6 +65,14 @@ public class ControllerCheck : MonoBehaviour
             inputJump = "JumpPS4";
             inputInteraction = "InteractionPS4";
             inputPause = "pausePS4";
+
+            DeathXbox.SetActive(false);
+            DeathPs4.SetActive(true);
+            if (isTutorial)
+            {
+                uiXBOX.SetActive(false);
+                uiPS4.SetActive(true);
+            }
         }
         else
         {
